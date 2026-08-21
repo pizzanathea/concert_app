@@ -1,8 +1,32 @@
 @import "tailwindcss";
 
+.aurora-layer {
+  position: absolute;
+  inset: -20%;
+  width: 140%;
+  height: 140%;
+  filter: blur(100px);
+}
+
+.aurora-1 {
+  background: radial-gradient(
+    ellipse 60% 50% at 70% 30%,
+    #f97316 0%,
+    #fbbf24 25%,
+    transparent 70%
+  );
+  animation: aurora-flow-1 20s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes aurora-flow-1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50% { transform: translate(-12%, 15%) scale(1.25); }
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0500;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -10,13 +34,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
