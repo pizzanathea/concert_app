@@ -1,16 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { AnimatePresence, motion, useMotionValue } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
+import MagneticIcon from "@/app/components/ui/MagneticIcon";
 
 const menuItems = [
-  { label: "Beranda", href: "/" },
-  { label: "Line Up", href: "/lineup" },
-  { label: "Tiket", href: "/tiket" },
-  { label: "Tentang", href: "/tentang" },
+  { label: "Home", href: "/" },
+  { label: "Festival Info", href: "/info" },
+  { label: "The Venue", href: "/venue" },
+  { label: "Artists Lineup", href: "/lineup" },
+  { label: "Schedule", href: "/schedule" },
+  { label: "Pre Event", href: "/pre-event" },
+  { label: "Live Streaming", href: "/live" },
+  { label: "Take a Part", href: "/take-a-part" },
+  { label: "Tickets", href: "/Tickets" },
+  { label: "F.A.Q", href: "/faq" },
 ];
 
 export default function Navbar() {
@@ -57,15 +68,7 @@ export default function Navbar() {
     >
       <nav className="flex items-center justify-between px-6 pb-4 pt-6 md:px-10 md:pt-7 lg:px-16">
         <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/logo.svg"
-            alt="Logo Konser"
-            width={40}
-            height={40}
-            style={{ height: "auto" }}
-            priority
-          />
-          <span className="hidden text-sm font-semibold tracking-wide text-white sm:block">
+          <span className="hidden text-xl font-bold tracking-wide text-white sm:block">
             Z FEST
           </span>
         </Link>
@@ -83,7 +86,7 @@ export default function Navbar() {
                 rest: { y: 0 },
                 hover: { y: "-100%" },
               }}
-              transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="absolute inset-0 flex items-center text-sm font-medium tracking-wide text-white/90"
             >
               Menu
@@ -93,7 +96,7 @@ export default function Navbar() {
                 rest: { y: "100%" },
                 hover: { y: 0 },
               }}
-              transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="absolute inset-0 flex items-center text-sm font-medium tracking-wide text-amber-300"
             >
               Open
@@ -141,43 +144,54 @@ export default function Navbar() {
         {menuOpen && (
           <motion.div
             initial={{ clipPath: "circle(0% at 100% 0%)" }}
-            animate={{ clipPath: "circle(150% at 100% 0%)" }}
-            exit={{ clipPath: "circle(0% at 100% 0%)" }}
-            transition={{ duration: 0.6, ease: [0.65, 0, 0.35, 1] }}
-            className="fixed inset-0 z-[60] flex flex-col bg-black/95 backdrop-blur-lg"
+            animate={{
+              clipPath: "circle(150% at 100% 0%)",
+              transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+            }}
+            exit={{
+              clipPath: ["inset(0% 0% 0% 0%)", "inset(0% 0% 100% 0%)"],
+              transition: { duration: 1.1, ease: [0.76, 0, 0.24, 1] },
+            }}
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-black/95 backdrop-blur-lg"
           >
-            <div className="flex w-full items-center justify-between px-6 py-4 md:px-10 lg:px-16">
-              <Link href="/" onClick={() => setMenuOpen(false)}>
-                <Image
-                  src="/logo.svg"
-                  alt="Logo Konser"
-                  width={40}
-                  height={40}
-                  style={{ height: "auto" }}
-                />
-              </Link>
-              <button
-                onClick={() => setMenuOpen(false)}
-                className="text-white/90 hover:text-amber-300"
-                aria-label="Tutup menu"
-              >
-                <X size={24} strokeWidth={1.75} />
-              </button>
+            <div className="flex w-full items-center justify-end px-6 py-4 md:px-10 lg:px-16">
+              <div className="flex translate-y-14 items-center gap-3">
+                <span className="text-sm font-medium tracking-wide text-white/80">
+                  Close
+                </span>
+                <MagneticIcon
+                  label="Tutup menu"
+                  onClick={() => setMenuOpen(false)}
+                  maxOffset={8}
+                >
+                  <X size={20} strokeWidth={1.75} />
+                </MagneticIcon>
+              </div>
             </div>
 
-            <ul className="flex flex-1 flex-col items-start justify-center gap-6 px-10 text-4xl font-semibold text-white md:text-6xl">
+            <ul className="flex flex-1 translate-y-16 flex-col items-start justify-center gap-8 px-20 py-10 text-4xl font-semibold text-white md:translate-y-20 md:gap-10 md:px-40 md:text-6xl lg:px-56">
               {menuItems.map((item, i) => (
                 <motion.li
                   key={item.href}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 30 }}
-                  transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
+                  exit={{ opacity: 0, y: 40 }}
+                  transition={{
+                    delay: 0.2 + i * 0.07,
+                    type: "spring",
+                    stiffness: 120,
+                    damping: 16,
+                    mass: 0.8,
+                  }}
+                  className="relative"
                 >
+                  <span className="absolute -left-7 -top-1 text-sm font-normal text-white/40 md:-left-10 md:text-base">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <Link
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className="transition-colors hover:text-amber-300"
+                    className="inline-block origin-left transition-all duration-300 ease-out hover:-skew-x-6 hover:text-amber-400"
                   >
                     {item.label}
                   </Link>

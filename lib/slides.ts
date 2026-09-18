@@ -46,10 +46,10 @@ export const slides: Slide[] = [
         id: "slide-5",
         variant: "split",
         eyebrow: "Special Show",
-        title: "wave to earth",
+        title: "The 1975",
         subtitle: "Special Show · Sat, 30 May 2026",
-        badgeLabel: "34th Seoul Music Awards Best Band Winner",
+        badgeLabel: "",
         date: "30 May 2026",
-        image: "/images/wave-to-earth.jpg",
+        image: "/The 1975 Desktop Wallpaper.svg",
     },
 ];
