@@ -1,6 +1,6 @@
 import GradientBackground from "@/app/components/layout/GradientBackground";
 
-export default function AdminLayout({
+export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;

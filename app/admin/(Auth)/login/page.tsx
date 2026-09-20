@@ -3,17 +3,16 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
 
@@ -22,36 +21,8 @@ export default function AdminLoginPage() {
       return;
     }
 
-    setLoading(true);
-    try {
-      // Ganti URL ini sesuai endpoint login dari backend partner kamu
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("Email atau password salah.");
-      }
-
-      const data = await res.json();
-
-      // Pastikan backend cuma kasih akses admin di sini
-      if (data.role !== "admin") {
-        throw new Error("Akun ini tidak memiliki akses admin.");
-      }
-
-      localStorage.setItem("token", data.token);
-      router.push("/admin/dashboard");
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Terjadi kesalahan.");
-    } finally {
-      setLoading(false);
-    }
+    // TODO: nanti diganti fetch() ke endpoint login backend beneran
+    router.push("/admin/dashboard");
   };
 
   return (
@@ -117,11 +88,9 @@ export default function AdminLoginPage() {
 
           <button
             type="submit"
-            disabled={loading}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-amber-400 py-3 text-sm font-semibold text-[#0a0500] transition-transform hover:scale-[1.02] disabled:opacity-60 disabled:hover:scale-100"
+            className="w-full rounded-lg bg-amber-400 py-3 text-sm font-semibold text-[#0a0500] transition-transform hover:scale-[1.02]"
           >
-            {loading && <Loader2 size={16} className="animate-spin" />}
-            {loading ? "Memproses..." : "Login"}
+            Login
           </button>
         </form>
 
