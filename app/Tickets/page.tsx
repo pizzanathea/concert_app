@@ -1,6 +1,5 @@
 import Link from "next/link";
 import TicketNav from "@/app/components/Ticket/TicketNav";
-import GradientBackground from "@/app/components/layout/GradientBackground";
 
 const reasons = [
   {
@@ -19,69 +18,53 @@ const reasons = [
 
 export default function TicketsPage() {
   return (
-    <div className="relative flex min-h-screen flex-col">
-      <GradientBackground />
+    // h-screen + overflow-hidden = halaman pas 1 layar, gak bisa di-scroll
+    <div className="flex h-screen flex-col overflow-hidden bg-white text-neutral-900">
       <TicketNav />
 
-      <main className="flex-1 px-6 py-16 md:py-24">
+      {/* min-h-0 wajib biar area tengah boleh mengecil dan gak ngedorong footer keluar layar */}
+      <main className="flex min-h-0 flex-1 flex-col items-center justify-center px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-400">
+          <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
             Z Fest 2026
           </span>
-          <h1 className="mt-3 text-4xl font-extrabold text-white md:text-5xl">
+          <h1 className="mt-3 text-4xl font-extrabold text-[#0a0500] md:text-5xl">
             Pesan Tiket Lewat Aplikasi Mobile
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-sm text-white/70 md:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-sm text-neutral-600 md:text-base">
             Semua transaksi tiket Z Fest cuma bisa dilakukan lewat aplikasi
             resmi kami. Download sekarang biar gak kehabisan tiket kelas favorit
             kamu.
           </p>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#"
-              className="rounded-full bg-amber-400 px-6 py-3 text-sm font-semibold text-[#0a0500] transition-transform hover:scale-105"
-            >
-              Download di App Store
-            </a>
-            <a
-              href="#"
-              className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-amber-400 hover:text-amber-400"
-            >
-              Download di Play Store
-            </a>
-          </div>
         </div>
 
         {/* Kenapa lewat app */}
-        <div className="mx-auto mt-20 grid max-w-4xl gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-10 grid w-full max-w-4xl gap-5 md:grid-cols-3">
           {reasons.map((reason) => (
             <div
               key={reason.title}
-              className="rounded-2xl border border-white/10 bg-black/40 p-6 text-left backdrop-blur-md"
+              className="rounded-2xl border border-neutral-200 bg-white p-5 text-left shadow-sm"
             >
-              <h3 className="text-lg font-bold text-amber-400">
+              <h3 className="text-lg font-bold text-amber-600">
                 {reason.title}
               </h3>
-              <p className="mt-2 text-sm text-white/70">{reason.desc}</p>
+              <p className="mt-2 text-sm text-neutral-600">{reason.desc}</p>
             </div>
           ))}
         </div>
-
-        {/* Info event singkat */}
-        <div className="mx-auto mt-16 max-w-4xl rounded-2xl border border-white/10 bg-black/40 p-8 text-center backdrop-blur-md md:p-10">
-          <p className="text-xs uppercase tracking-widest text-white/50">
-            Jadwal & Lokasi
-          </p>
-          <p className="mt-2 text-xl font-semibold text-white md:text-2xl">
-            29–30 Mei 2026 · Jakarta International Expo
-          </p>
-        </div>
       </main>
 
-      <footer className="border-t border-white/10 bg-black/40 px-6 py-6 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 text-xs text-white/50 md:flex-row">
-          <p>&copy; 2026 Z Fest. All Rights Reserved</p>
+      {/* Footer: warna sama dengan navbar, dibikin pendek (satu baris, py-4) */}
+      <footer className="shrink-0 bg-[#0a0500]">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 text-xs text-white/60 lg:px-10">
+          <div className="flex items-center gap-4">
+            <span className="text-lg font-extrabold tracking-tight text-white">
+              Z<span className="text-amber-400">FEST</span>
+            </span>
+            <span className="hidden sm:inline">
+              &copy; 2026 Z Fest. All Rights Reserved
+            </span>
+          </div>
           <Link href="/terms" className="text-amber-400 hover:underline">
             Terms and Conditions
           </Link>
