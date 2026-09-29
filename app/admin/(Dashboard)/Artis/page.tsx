@@ -32,27 +32,13 @@ export default function ArtisPage() {
     { key: "genre", label: "Genre" },
   ];
 
-  const openCreate = () => {
-    setEditing(null);
-    setForm(emptyForm);
-    setModalOpen(true);
-  };
-
-  const openEdit = (row: Artis) => {
-    setEditing(row);
-    setForm({ nama: row.nama, genre: row.genre });
-    setModalOpen(true);
-  };
+  const openCreate = () => { setEditing(null); setForm(emptyForm); setModalOpen(true); };
+  const openEdit = (row: Artis) => { setEditing(row); setForm({ nama: row.nama, genre: row.genre }); setModalOpen(true); };
 
   const handleSave = () => {
     if (!form.nama || !form.genre) return;
-
     if (editing) {
-      setData((prev) =>
-        prev.map((item) =>
-          item.id === editing.id ? { ...item, ...form } : item,
-        ),
-      );
+      setData((prev) => prev.map((item) => item.id === editing.id ? { ...item, ...form } : item));
     } else {
       setData((prev) => [...prev, { id: Date.now(), ...form }]);
     }
@@ -67,72 +53,42 @@ export default function ArtisPage() {
 
   return (
     <>
-
-      <div className="p-8">
-        <div className="mb-5 flex justify-end">
+      <div className="p-8 space-y-6 bg-white min-h-full">
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-600">Pengelolaan / Artis</span>
+            <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-neutral-900">Lineup & Artis</h1>
+          </div>
           <button
             onClick={openCreate}
-            className="flex items-center gap-2 rounded-lg bg-amber-400 px-4 py-2.5 text-sm font-semibold text-[#0a0500] transition-transform hover:scale-105"
+            className="flex items-center gap-2 rounded-xl bg-amber-400 px-4 py-2.5 text-xs font-bold text-neutral-950 shadow-sm transition-all hover:bg-amber-300 hover:scale-105"
           >
-            <Plus size={16} />
-            Tambah Artis
+            <Plus size={16} /> Tambah Artis
           </button>
         </div>
-
-        <DataTable
-          columns={columns}
-          rows={data}
-          onEdit={openEdit}
-          onDelete={setDeleteTarget}
-        />
+        <DataTable columns={columns} rows={data} onEdit={openEdit} onDelete={setDeleteTarget} />
       </div>
 
-      <Modal
-        title={editing ? "Edit Artis" : "Tambah Artis"}
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-      >
+      <Modal title={editing ? "Edit Artis" : "Tambah Artis"} open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/60">
-              Nama Artis
-            </label>
-            <input
-              value={form.nama}
-              onChange={(e) => setForm({ ...form, nama: e.target.value })}
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-amber-400"
-              placeholder="Jon Batiste"
-            />
+            <label className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-neutral-600">Nama Artis</label>
+            <input value={form.nama} onChange={(e) => setForm({ ...form, nama: e.target.value })}
+              className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm text-neutral-900 outline-none focus:border-amber-500" placeholder="Jon Batiste" />
           </div>
-
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/60">
-              Genre
-            </label>
-            <input
-              value={form.genre}
-              onChange={(e) => setForm({ ...form, genre: e.target.value })}
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-amber-400"
-              placeholder="Jazz/Soul"
-            />
+            <label className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-neutral-600">Genre</label>
+            <input value={form.genre} onChange={(e) => setForm({ ...form, genre: e.target.value })}
+              className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm text-neutral-900 outline-none focus:border-amber-500" placeholder="Jazz/Soul" />
           </div>
-
-          <button
-            onClick={handleSave}
-            className="w-full rounded-lg bg-amber-400 py-2.5 text-sm font-semibold text-[#0a0500] hover:scale-[1.02] transition-transform"
-          >
+          <button onClick={handleSave}
+            className="w-full rounded-xl bg-amber-400 py-3 text-xs font-bold uppercase tracking-wider text-neutral-950 transition-colors hover:bg-amber-300 shadow-sm">
             Simpan
           </button>
         </div>
       </Modal>
 
-      <ConfirmDialog
-        open={!!deleteTarget}
-        title="Hapus Artis?"
-        description={`Data "${deleteTarget?.nama}" akan dihapus permanen.`}
-        onConfirm={handleDelete}
-        onCancel={() => setDeleteTarget(null)}
-      />
+      <ConfirmDialog open={!!deleteTarget} title="Hapus Artis?" description={`Data "${deleteTarget?.nama}" akan dihapus permanen.`} onConfirm={handleDelete} onCancel={() => setDeleteTarget(null)} />
     </>
   );
 }

@@ -12,7 +12,7 @@ export type Column<T> = {
 type Props<T extends { id: number }> = {
   columns: Column<T>[];
   rows: T[];
-  onEdit: (row: T) => void;
+  onEdit?: (row: T) => void;
   onDelete: (row: T) => void;
 };
 
@@ -23,32 +23,25 @@ export default function DataTable<T extends { id: number }>({
   onDelete,
 }: Props<T>) {
   return (
-    <div className="overflow-hidden rounded-xl border border-white/10">
-      <table className="w-full text-sm">
+    <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
+      <table className="w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-white/10 bg-white/5">
-            <th className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-white/40">
-              #
-            </th>
+          <tr className="border-b border-neutral-200 bg-neutral-50 text-[11px] font-bold uppercase tracking-wider text-neutral-600">
+            <th className="px-5 py-4">#</th>
             {columns.map((col) => (
-              <th
-                key={String(col.key)}
-                className="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-white/40"
-              >
+              <th key={String(col.key)} className="px-5 py-4">
                 {col.label}
               </th>
             ))}
-            <th className="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide text-white/40">
-              Aksi
-            </th>
+            <th className="px-5 py-4 text-right">Aksi</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-neutral-100">
           {rows.length === 0 ? (
             <tr>
               <td
                 colSpan={columns.length + 2}
-                className="px-4 py-8 text-center text-sm text-white/30"
+                className="px-5 py-8 text-center text-sm text-neutral-500"
               >
                 Belum ada data.
               </td>
@@ -57,29 +50,31 @@ export default function DataTable<T extends { id: number }>({
             rows.map((row, i) => (
               <tr
                 key={row.id}
-                className="border-b border-white/5 transition-colors hover:bg-white/5"
+                className="text-neutral-800 transition-colors hover:bg-neutral-50/70"
               >
-                <td className="px-4 py-3 text-white/30">{i + 1}</td>
+                <td className="px-5 py-4 font-mono text-neutral-500">{i + 1}</td>
                 {columns.map((col) => (
-                  <td key={String(col.key)} className="px-4 py-3 text-white/80">
+                  <td key={String(col.key)} className="px-5 py-4 text-neutral-800 font-medium">
                     {col.render ? col.render(row) : String(row[col.key] ?? "")}
                   </td>
                 ))}
-                <td className="px-4 py-3">
+                <td className="px-5 py-4">
                   <div className="flex justify-end gap-2">
-                    <button
-                      onClick={() => onEdit(row)}
-                      className="rounded-lg p-2 text-white/50 transition-colors hover:bg-amber-400/10 hover:text-amber-400"
-                      aria-label="Edit"
-                    >
-                      <Pencil size={14} />
-                    </button>
+                    {onEdit && (
+                      <button
+                        onClick={() => onEdit(row)}
+                        className="rounded-lg p-2 text-neutral-500 transition-colors hover:bg-amber-500/10 hover:text-amber-600"
+                        aria-label="Edit"
+                      >
+                        <Pencil size={15} />
+                      </button>
+                    )}
                     <button
                       onClick={() => onDelete(row)}
-                      className="rounded-lg p-2 text-white/50 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                      className="rounded-lg p-2 text-neutral-500 transition-colors hover:bg-red-500/10 hover:text-red-600"
                       aria-label="Hapus"
                     >
-                      <Trash2 size={14} />
+                      <Trash2 size={15} />
                     </button>
                   </div>
                 </td>

@@ -35,41 +35,25 @@ export default function EventPage() {
       key: "status",
       label: "Status",
       render: (row: EventItem) => (
-        <span
-          className={[
-            "rounded-full px-3 py-1 text-xs font-semibold",
-            row.status === "Buka"
-              ? "bg-green-500/10 text-green-400"
-              : "bg-white/10 text-white/50",
-          ].join(" ")}
-        >
+        <span className={[
+          "rounded-full px-3 py-1 text-xs font-semibold",
+          row.status === "Buka"
+            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+            : "bg-neutral-100 text-neutral-500 border border-neutral-200",
+        ].join(" ")}>
           {row.status}
         </span>
       ),
     },
   ];
 
-  const openCreate = () => {
-    setEditing(null);
-    setForm(emptyForm);
-    setModalOpen(true);
-  };
-
-  const openEdit = (row: EventItem) => {
-    setEditing(row);
-    setForm({ nama: row.nama, tanggal: row.tanggal, status: row.status });
-    setModalOpen(true);
-  };
+  const openCreate = () => { setEditing(null); setForm(emptyForm); setModalOpen(true); };
+  const openEdit = (row: EventItem) => { setEditing(row); setForm({ nama: row.nama, tanggal: row.tanggal, status: row.status }); setModalOpen(true); };
 
   const handleSave = () => {
     if (!form.nama || !form.tanggal) return;
-
     if (editing) {
-      setData((prev) =>
-        prev.map((item) =>
-          item.id === editing.id ? { ...item, ...form } : item,
-        ),
-      );
+      setData((prev) => prev.map((item) => item.id === editing.id ? { ...item, ...form } : item));
     } else {
       setData((prev) => [...prev, { id: Date.now(), ...form }]);
     }
@@ -84,88 +68,51 @@ export default function EventPage() {
 
   return (
     <>
-
-      <div className="p-8">
-        <div className="mb-5 flex justify-end">
+      <div className="p-8 space-y-6 bg-white min-h-full">
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-amber-600">Pengelolaan / Konser</span>
+            <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-neutral-900">Daftar Event & Konser</h1>
+          </div>
           <button
             onClick={openCreate}
-            className="flex items-center gap-2 rounded-lg bg-amber-400 px-4 py-2.5 text-sm font-semibold text-[#0a0500] transition-transform hover:scale-105"
+            className="flex items-center gap-2 rounded-xl bg-amber-400 px-4 py-2.5 text-xs font-bold text-neutral-950 shadow-sm transition-all hover:bg-amber-300 hover:scale-105"
           >
-            <Plus size={16} />
-            Tambah Event
+            <Plus size={16} /> Tambah Event
           </button>
         </div>
-
-        <DataTable
-          columns={columns}
-          rows={data}
-          onEdit={openEdit}
-          onDelete={setDeleteTarget}
-        />
+        <DataTable columns={columns} rows={data} onEdit={openEdit} onDelete={setDeleteTarget} />
       </div>
 
-      <Modal
-        title={editing ? "Edit Event" : "Tambah Event"}
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-      >
+      <Modal title={editing ? "Edit Event" : "Tambah Event"} open={modalOpen} onClose={() => setModalOpen(false)}>
         <div className="space-y-4">
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/60">
-              Nama Event
-            </label>
-            <input
-              value={form.nama}
-              onChange={(e) => setForm({ ...form, nama: e.target.value })}
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-amber-400"
-              placeholder="Z Fest Day 1"
-            />
+            <label className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-neutral-600">Nama Event</label>
+            <input value={form.nama} onChange={(e) => setForm({ ...form, nama: e.target.value })}
+              className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm text-neutral-900 outline-none focus:border-amber-500"
+              placeholder="Z Fest Day 1" />
           </div>
-
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/60">
-              Tanggal
-            </label>
-            <input
-              type="date"
-              value={form.tanggal}
-              onChange={(e) => setForm({ ...form, tanggal: e.target.value })}
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-amber-400"
-            />
+            <label className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-neutral-600">Tanggal</label>
+            <input type="date" value={form.tanggal} onChange={(e) => setForm({ ...form, tanggal: e.target.value })}
+              className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm text-neutral-900 outline-none focus:border-amber-500" />
           </div>
-
           <div>
-            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/60">
-              Status
-            </label>
-            <select
-              value={form.status}
-              onChange={(e) =>
-                setForm({ ...form, status: e.target.value as "Buka" | "Tutup" })
-              }
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none focus:border-amber-400"
-            >
+            <label className="mb-1.5 block text-xs font-bold uppercase tracking-wide text-neutral-600">Status</label>
+            <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value as "Buka" | "Tutup" })}
+              className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm text-neutral-900 outline-none focus:border-amber-500">
               <option value="Buka">Buka</option>
               <option value="Tutup">Tutup</option>
             </select>
           </div>
-
-          <button
-            onClick={handleSave}
-            className="w-full rounded-lg bg-amber-400 py-2.5 text-sm font-semibold text-[#0a0500] hover:scale-[1.02] transition-transform"
-          >
+          <button onClick={handleSave}
+            className="w-full rounded-xl bg-amber-400 py-3 text-xs font-bold uppercase tracking-wider text-neutral-950 transition-colors hover:bg-amber-300 shadow-sm">
             Simpan
           </button>
         </div>
       </Modal>
 
-      <ConfirmDialog
-        open={!!deleteTarget}
-        title="Hapus Event?"
-        description={`Event "${deleteTarget?.nama}" akan dihapus permanen.`}
-        onConfirm={handleDelete}
-        onCancel={() => setDeleteTarget(null)}
-      />
+      <ConfirmDialog open={!!deleteTarget} title="Hapus Event?" description={`Event "${deleteTarget?.nama}" akan dihapus permanen.`} onConfirm={handleDelete} onCancel={() => setDeleteTarget(null)} />
     </>
   );
 }
