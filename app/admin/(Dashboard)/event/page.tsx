@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import Topbar from "@/app/components/admin/Topbar";
 import DataTable, { Column } from "@/app/components/admin/DataTable";
 import Modal from "@/app/components/admin/modal";
 import ConfirmDialog from "@/app/components/admin/ConfirmDialog";
@@ -20,13 +19,13 @@ const initialData: EventItem[] = [
   { id: 3, nama: "Pre Event A", tanggal: "2026-04-10", status: "Tutup" },
 ];
 
-const emptyForm = { nama: "", tanggal: "", status: "Buka" as const };
+const emptyForm: { nama: string; tanggal: string; status: "Buka" | "Tutup" } = { nama: "", tanggal: "", status: "Buka" };
 
 export default function EventPage() {
   const [data, setData] = useState<EventItem[]>(initialData);
   const [modalOpen, setModalOpen] = useState(false);
   const [editing, setEditing] = useState<EventItem | null>(null);
-  const [form, setForm] = useState(emptyForm);
+  const [form, setForm] = useState<{ nama: string; tanggal: string; status: "Buka" | "Tutup" }>(emptyForm);
   const [deleteTarget, setDeleteTarget] = useState<EventItem | null>(null);
 
   const columns: Column<EventItem>[] = [
@@ -35,7 +34,7 @@ export default function EventPage() {
     {
       key: "status",
       label: "Status",
-      render: (row) => (
+      render: (row: EventItem) => (
         <span
           className={[
             "rounded-full px-3 py-1 text-xs font-semibold",
@@ -85,7 +84,6 @@ export default function EventPage() {
 
   return (
     <>
-      <Topbar title="Event/Konser" />
 
       <div className="p-8">
         <div className="mb-5 flex justify-end">

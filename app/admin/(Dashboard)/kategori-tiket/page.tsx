@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import Topbar from "@/app/components/admin/Topbar";
 import DataTable, { Column } from "@/app/components/admin/DataTable";
 import Modal from "@/app/components/admin/modal";
 import ConfirmDialog from "@/app/components/admin/ConfirmDialog";
@@ -38,11 +37,11 @@ export default function KategoriTiketPage() {
 
   const columns: Column<Kategori>[] = [
     { key: "nama", label: "Kelas Tiket" },
-    { key: "harga", label: "Harga", render: (row) => formatRupiah(row.harga) },
+    { key: "harga", label: "Harga", render: (row: Kategori) => formatRupiah(row.harga) },
     {
       key: "kuota",
       label: "Sisa Kuota",
-      render: (row) => {
+      render: (row: Kategori) => {
         const sisa = row.kuota - row.terjual;
         const pct = (row.terjual / row.kuota) * 100;
         return (
@@ -98,8 +97,6 @@ export default function KategoriTiketPage() {
 
   return (
     <>
-      <Topbar title="Kategori Tiket" />
-
       <div className="p-8">
         <div className="mb-5 flex justify-end">
           <button

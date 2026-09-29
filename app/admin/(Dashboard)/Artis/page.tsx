@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import Topbar from "@/app/components/admin/Topbar";
 import DataTable, { Column } from "@/app/components/admin/DataTable";
 import Modal from "@/app/components/admin/modal";
 import ConfirmDialog from "@/app/components/admin/ConfirmDialog";
@@ -68,7 +67,6 @@ export default function ArtisPage() {
 
   return (
     <>
-      <Topbar title="Penyanyi/Artis" />
 
       <div className="p-8">
         <div className="mb-5 flex justify-end">

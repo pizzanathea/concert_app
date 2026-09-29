@@ -1,4 +1,4 @@
-import Sidebar from "@/app/components/admin/Sidebar";
+import AdminHeader from "@/app/components/admin/AdminHeader";
 
 export default function DashboardLayout({
   children,
@@ -6,9 +6,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-[#0a0500]">
-      <Sidebar />
-      <div className="flex-1 overflow-y-auto">{children}</div>
+    <div className="min-h-screen bg-[#0a0500] text-white">
+      <AdminHeader />
+      <div className="mx-auto max-w-7xl">{children}</div>
     </div>
   );
 }
