@@ -29,9 +29,9 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const dotX = useMotionValue(0);
   const dotY = useMotionValue(0);
-  const MAX_OFFSET_X = 11; // batas gerak titik ke kiri/kanan, dalam px
-  const MAX_OFFSET_Y_TOP = 11; // batas gerak titik ke atas, dalam px
-  const MAX_OFFSET_Y_BOTTOM = 20; // batas gerak titik ke bawah, dilebarin
+  const MAX_OFFSET_X = 11;
+  const MAX_OFFSET_Y_TOP = 11;
+  const MAX_OFFSET_Y_BOTTOM = 20;
 
   const handleHamburgerMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -82,20 +82,14 @@ export default function Navbar() {
         >
           <div className="relative h-5 w-12 overflow-hidden">
             <motion.span
-              variants={{
-                rest: { y: 0 },
-                hover: { y: "-100%" },
-              }}
+              variants={{ rest: { y: 0 }, hover: { y: "-100%" } }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="absolute inset-0 flex items-center text-sm font-medium tracking-wide text-white/90"
             >
               Menu
             </motion.span>
             <motion.span
-              variants={{
-                rest: { y: "100%" },
-                hover: { y: 0 },
-              }}
+              variants={{ rest: { y: "100%" }, hover: { y: 0 } }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className="absolute inset-0 flex items-center text-sm font-medium tracking-wide text-amber-300"
             >
@@ -108,7 +102,6 @@ export default function Navbar() {
             onMouseLeave={resetDot}
             className="relative h-6 w-6 pb-4"
           >
-            {/* 2 garis hamburger */}
             <motion.span
               variants={{
                 rest: { opacity: 1, y: 0 },
@@ -125,8 +118,6 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="absolute left-0 top-[13px] h-[2px] w-[70%] rounded-full bg-white/90 group-hover:bg-amber-300"
             />
-
-            {/* Titik yang muncul & ngikutin cursor pas hover, dibatasi area hamburger */}
             <motion.span
               style={{ x: dotX, y: dotY }}
               variants={{
@@ -150,7 +141,11 @@ export default function Navbar() {
             }}
             exit={{
               clipPath: ["inset(0% 0% 0% 0%)", "inset(0% 0% 100% 0%)"],
-              transition: { duration: 1.1, ease: [0.76, 0, 0.24, 1] },
+              transition: {
+                duration: 1.1,
+                ease: [0.76, 0, 0.24, 1],
+                delay: 0.45,
+              },
             }}
             className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-black/95 backdrop-blur-lg"
           >
@@ -174,15 +169,29 @@ export default function Navbar() {
                 <motion.li
                   key={item.href}
                   initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 40 }}
-                  transition={{
-                    delay: 0.2 + i * 0.07,
-                    type: "spring",
-                    stiffness: 120,
-                    damping: 16,
-                    mass: 0.8,
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: 0.2 + i * 0.07,
+                      type: "spring",
+                      stiffness: 120,
+                      damping: 16,
+                      mass: 0.8,
+                    },
                   }}
+                  exit={{
+                    opacity: 0,
+                    y: -180,
+                    scaleY: 0.4,
+                    scaleX: 0.85,
+                    transition: {
+                      delay: i * 0.06,
+                      duration: 0.35,
+                      ease: [0.55, 0, 1, 0.45],
+                    },
+                  }}
+                  style={{ transformOrigin: "top" }}
                   className="relative"
                 >
                   <span className="absolute -left-7 -top-1 text-sm font-normal text-white/40 md:-left-10 md:text-base">
