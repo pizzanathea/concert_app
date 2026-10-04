@@ -19,8 +19,8 @@ const breakdownSections = [
         </p>
 
         <Link
-          href="/experience"
-          className="group mt-8 inline-flex items-center gap-4 border-b border-white/30 pb-3 text-xs font-medium uppercase tracking-[0.25em] text-white transition-colors duration-300 hover:border-amber-400 hover:text-amber-400"
+          href="/whats-happening"
+          className="group mt-8 inline-flex items-center gap-4 border-b border-white/30 pb-3 text-xs font-semibold uppercase tracking-[0.25em] text-black transition-colors duration-300 hover:border-amber-400 hover:text-amber-400"
         >
           Explore the experience
           <ArrowUpRight
@@ -54,7 +54,7 @@ const breakdownSections = [
 
         <Link
           href="/history"
-          className="group mt-8 inline-flex items-center gap-4 border-b border-white/30 pb-3 text-xs font-medium uppercase tracking-[0.25em] text-white transition-colors duration-300 hover:border-amber-400 hover:text-amber-400"
+          className="group mt-8 inline-flex items-center gap-4 border-b border-white/30 pb-3 text-xs font-semibold uppercase tracking-[0.25em] text-black transition-colors duration-300 hover:border-amber-400 hover:text-amber-400"
         >
           Discover our story
           <ArrowUpRight
@@ -70,7 +70,7 @@ const breakdownSections = [
     title: "Event Regulations",
     subtitle: "Know before you go",
     content: (
-      <div className="border-t border-white/10">
+      <div className="border-t border-black/10">
         {[
           "Tiket yang digunakan harus valid dan tetap disimpan selama berada di area festival.",
           "Ikuti prosedur pemeriksaan dan instruksi dari petugas saat memasuki venue.",
@@ -78,14 +78,14 @@ const breakdownSections = [
           "Hormati sesama pengunjung, performer, crew, dan seluruh lingkungan festival.",
           "Ikuti seluruh peraturan dan arahan keselamatan selama acara berlangsung.",
         ].map((rule) => (
-          <div key={rule} className="flex gap-5 border-b border-white/10 py-5">
+          <div key={rule} className="flex gap-5 border-b border-black/10 py-5">
             <Circle
               size={6}
               fill="currentColor"
               className="mt-2 shrink-0 text-amber-400"
             />
 
-            <p className="max-w-2xl text-sm leading-7 text-white/50 md:text-base">
+            <p className="max-w-2xl text-sm leading-7 text-black/50 md:text-base">
               {rule}
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function FestivalInfoPage() {
   const sloganScale = useTransform(scrollY, [0, 450], [1, 0.94]);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#080808] text-white">
+    <main className="min-h-screen overflow-hidden bg-white text-black">
       {/* =====================================================
           HERO
       ====================================================== */}
@@ -172,7 +172,7 @@ export default function FestivalInfoPage() {
                   perspective: 1000,
                 }}
               >
-                <h1 className="max-w-5xl text-[clamp(3.2rem,7.5vw,7.5rem)] font-medium uppercase leading-[0.86] tracking-[-0.065em]">
+                <h1 className="max-w-5xl text-[clamp(3.2rem,7.5vw,7.5rem)] font-semibold uppercase leading-[0.86] tracking-[-0.065em]">
                   More than
                   <br />
                   just a <span className="text-amber-400">festival.</span>
@@ -185,7 +185,7 @@ export default function FestivalInfoPage() {
             <div className="flex items-start gap-7 lg:pt-[3.8rem] xl:gap-10">
               <div className="max-w-lg">
                 <RevealText delay={0.2}>
-                  <p className="text-base leading-7 text-white/50 md:text-lg">
+                  <p className="text-base leading-7 text-black/50 md:text-lg">
                     Music, creativity, culture, and people come together in one
                     unforgettable experience. Z Fest is not simply something you
                     attend. It&apos;s something you become part of.
@@ -206,7 +206,7 @@ export default function FestivalInfoPage() {
                   style={{
                     opacity: scrollTextOpacity,
                   }}
-                  className="text-[12px] font-medium uppercase tracking-[0.25em] text-white/45 [writing-mode:vertical-rl]"
+                  className="text-[12px] font-bold uppercase tracking-[0.25em] text-black [writing-mode:vertical-rl]"
                 >
                   Scroll
                 </motion.span>
@@ -243,41 +243,41 @@ export default function FestivalInfoPage() {
               delay: 0.5,
               duration: 0.8,
             }}
-            className="mt-28 border-t border-white/15"
+            className="mt-28 border-t border-black/15"
           >
             <div className="grid md:grid-cols-2 lg:grid-cols-4">
-              <div className="border-b border-white/10 py-6 md:border-r md:px-6 lg:border-b-0 lg:pl-0">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/30">
+              <div className="border-b border-black/10 py-6 md:border-r md:px-6 lg:border-b-0 lg:pl-0">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-black/30">
                   Date
                 </p>
 
-                <p className="mt-2 text-sm text-white/80">29—30 May 2026</p>
+                <p className="mt-2 text-sm text-black/80">29—30 May 2026</p>
               </div>
 
-              <div className="border-b border-white/10 py-6 md:px-6 lg:border-b-0 lg:border-r">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/30">
+              <div className="border-b border-black/10 py-6 md:px-6 lg:border-b-0 lg:border-r">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-black/30">
                   Venue
                 </p>
 
-                <p className="mt-2 text-sm text-white/80">
+                <p className="mt-2 text-sm text-black/80">
                   Jakarta International Expo
                 </p>
               </div>
 
-              <div className="border-b border-white/10 py-6 md:border-r md:px-6 lg:border-b-0">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/30">
+              <div className="border-b border-black/10 py-6 md:border-r md:px-6 lg:border-b-0">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-black/30">
                   Doors Open
                 </p>
 
-                <p className="mt-2 text-sm text-white/80">15.00 WIB</p>
+                <p className="mt-2 text-sm text-black/80">15.00 WIB</p>
               </div>
 
               <div className="py-6 md:px-6">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/30">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-black/30">
                   Tickets
                 </p>
 
-                <p className="mt-2 text-sm text-white/80">Regular & VIP</p>
+                <p className="mt-2 text-sm text-black/80">Regular & VIP</p>
               </div>
             </div>
           </motion.div>
@@ -288,19 +288,19 @@ export default function FestivalInfoPage() {
           ABOUT
       ====================================================== */}
 
-      <section className="border-t border-white/10 px-6 py-28 md:px-10 md:py-36 lg:px-16">
+      <section className="border-t border-black/10 px-6 py-28 md:px-10 md:py-36 lg:px-16">
         <div className="mx-auto grid max-w-[1500px] gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <RevealText>
-            <h2 className="text-[clamp(2.8rem,5vw,5rem)] font-medium uppercase leading-[0.9] tracking-[-0.055em]">
+            <h2 className="text-[clamp(2.8rem,5vw,5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.055em]">
               About
               <br />
-              <span className="text-white/30">Z Fest.</span>
+              <span className="text-black/30">Z Fest.</span>
             </h2>
           </RevealText>
 
           <div className="max-w-2xl lg:pt-3">
             <RevealText delay={0.1}>
-              <p className="text-base leading-8 text-white/55 md:text-lg">
+              <p className="text-base leading-8 text-black/55 md:text-lg">
                 Z Fest adalah festival musik tahunan yang menghadirkan musisi
                 lokal dan internasional lintas genre dalam satu pengalaman
                 besar. Lebih dari sekadar konser, Z Fest menjadi ruang berkumpul
@@ -310,7 +310,7 @@ export default function FestivalInfoPage() {
             </RevealText>
 
             <RevealText delay={0.2}>
-              <p className="mt-8 text-base leading-8 text-white/55 md:text-lg">
+              <p className="mt-8 text-base leading-8 text-black/55 md:text-lg">
                 Dari panggung utama hingga ruang kreatif, setiap bagian dari Z
                 Fest dirancang untuk menciptakan pengalaman yang tidak hanya
                 didengar, tetapi juga dirasakan.
@@ -324,9 +324,9 @@ export default function FestivalInfoPage() {
           BREAKDOWN
       ====================================================== */}
 
-      <section className="border-t border-white/10 px-6 py-20 md:px-10 md:py-28 lg:px-16">
+      <section className="border-t border-black/10 bg-white px-6 py-20 text-black md:px-10 md:py-28 lg:px-16">
         <div className="mx-auto max-w-[1500px]">
-          <div className="border-t border-white/15">
+          <div className="border-t border-black/15">
             {breakdownSections.map((section, index) => (
               <BreakdownItem
                 key={section.title}
@@ -529,7 +529,7 @@ function BreakdownItem({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-white/15">
+    <div className="border-b border-black/15">
       <button
         type="button"
         onClick={() => setOpen(!open)}
@@ -552,7 +552,7 @@ function BreakdownItem({
             transition={{
               duration: 0.6,
             }}
-            className="mb-3 text-[10px] uppercase tracking-[0.3em] text-white/30"
+            className="mb-3 text-[10px] uppercase tracking-[0.3em] text-black/30"
           >
             {section.subtitle}
           </motion.p>
@@ -575,7 +575,7 @@ function BreakdownItem({
                 duration: 0.75,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="text-[clamp(2rem,4.5vw,4.5rem)] font-medium uppercase leading-[0.9] tracking-[-0.05em] transition-colors duration-300 group-hover:text-amber-400"
+              className="text-[clamp(2rem,4.5vw,4.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.05em] transition-colors duration-300 group-hover:text-amber-400"
             >
               {section.title}
             </motion.h3>
@@ -590,7 +590,7 @@ function BreakdownItem({
             duration: 0.4,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/20 transition-colors duration-300 group-hover:border-amber-400 group-hover:text-amber-400 md:h-16 md:w-16"
+          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-black/20 transition-colors duration-300 group-hover:border-amber-400 group-hover:text-amber-400 md:h-16 md:w-16"
         >
           <ArrowDown size={19} strokeWidth={1.5} />
         </motion.div>
@@ -643,7 +643,7 @@ function ManifestoSection() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[80vh] items-center justify-center overflow-hidden border-t border-white/10 px-6 py-40 md:px-10"
+      className="relative flex min-h-[80vh] items-center justify-center overflow-hidden border-t border-black/10 px-6 py-40 md:px-10"
     >
       <motion.div
         initial={{
@@ -737,9 +737,9 @@ function ManifestoLine({
           ease: [0.16, 1, 0.3, 1],
         }}
         className={[
-          "text-[clamp(3rem,8vw,8rem)] font-medium uppercase leading-[0.84] tracking-[-0.065em]",
+          "text-[clamp(3rem,8vw,8rem)] font-semibold uppercase leading-[0.84] tracking-[-0.065em]",
           accent ? "text-amber-400" : "",
-          muted ? "text-white/25" : "",
+          muted ? "text-black/25" : "",
         ].join(" ")}
       >
         {text}
