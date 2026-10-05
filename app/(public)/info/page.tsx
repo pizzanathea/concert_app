@@ -12,10 +12,10 @@ const breakdownSections = [
     content: (
       <>
         <p>
-          Selama dua hari, Z Fest menghadirkan pertunjukan musik dari berbagai
-          musisi lokal dan internasional, creative space, area kuliner,
-          komunitas, serta berbagai aktivitas yang membuat pengalaman festival
-          terasa lebih lengkap dari sekadar menonton konser.
+          Over the course of three days, Z Fest featured musical performances by
+          various local and international musicians, creative spaces, a food
+          court, community events, and a variety of activities that made the
+          festival experience feel like more than just watching concerts.
         </p>
 
         <Link
@@ -38,18 +38,17 @@ const breakdownSections = [
     content: (
       <>
         <p>
-          Z Fest berawal dari sebuah ide sederhana: menciptakan ruang di mana
-          musik, kreativitas, dan manusia dapat bertemu dalam satu pengalaman.
-          Dari awal yang sederhana, Z Fest terus berkembang bersama musisi,
-          komunitas, kreator, dan orang-orang yang percaya bahwa festival bukan
-          hanya tentang panggung.
+          Z Fest began with a simple idea: to create a space where music,
+          creativity, and people could come together in a single experience.
+          From these humble beginnings, Z Fest has continued to grow alongside
+          musicians, communities, creators, and people who believe that a
+          festival is not just about the stage.
         </p>
 
         <p className="mt-7">
-          Hari ini, Z Fest hadir dengan semangat yang sama, tetapi dengan
-          pengalaman yang lebih besar. Setiap edisi menjadi bagian dari
-          perjalanan untuk menciptakan momen baru dan membawa lebih banyak orang
-          menjadi bagian dari cerita ini.
+          Today, Z Fest returns with the same spirit, but with even more
+          experience. Each edition is part of a journey to create new moments
+          and bring more people into this story.
         </p>
 
         <Link
@@ -72,11 +71,11 @@ const breakdownSections = [
     content: (
       <div className="border-t border-black/10">
         {[
-          "Tiket yang digunakan harus valid dan tetap disimpan selama berada di area festival.",
-          "Ikuti prosedur pemeriksaan dan instruksi dari petugas saat memasuki venue.",
-          "Senjata, benda berbahaya, zat terlarang, dan barang yang dilarang tidak diperbolehkan.",
-          "Hormati sesama pengunjung, performer, crew, dan seluruh lingkungan festival.",
-          "Ikuti seluruh peraturan dan arahan keselamatan selama acara berlangsung.",
+          "Tickets used must be valid and kept on hand while at the festival area.",
+          "Follow inspection procedures and instructions from staff when entering the venue.",
+          "Weapons, dangerous objects, prohibited substances, and forbidden items are not allowed.",
+          "Respect other visitors, performers, crew, and the entire festival environment.",
+          "Follow all rules and safety guidelines throughout the event.",
         ].map((rule) => (
           <div key={rule} className="flex gap-5 border-b border-black/10 py-5">
             <Circle
@@ -301,19 +300,19 @@ export default function FestivalInfoPage() {
           <div className="max-w-2xl lg:pt-3">
             <RevealText delay={0.1}>
               <p className="text-base leading-8 text-black/55 md:text-lg">
-                Z Fest adalah festival musik tahunan yang menghadirkan musisi
-                lokal dan internasional lintas genre dalam satu pengalaman
-                besar. Lebih dari sekadar konser, Z Fest menjadi ruang berkumpul
-                untuk merayakan musik, kreativitas, budaya, dan koneksi antar
-                manusia.
+                Z Fest is an annual music festival that brings together local
+                and international musicians across genres in one grand
+                experience. More than just a concert, Z Fest serves as a
+                gathering place to celebrate music, creativity, culture, and
+                human connections.
               </p>
             </RevealText>
 
             <RevealText delay={0.2}>
               <p className="mt-8 text-base leading-8 text-black/55 md:text-lg">
-                Dari panggung utama hingga ruang kreatif, setiap bagian dari Z
-                Fest dirancang untuk menciptakan pengalaman yang tidak hanya
-                didengar, tetapi juga dirasakan.
+                From the main stage to the creative space, every part of Z Fest
+                is designed to create an experience that is not only heard, but
+                also felt.
               </p>
             </RevealText>
           </div>
@@ -450,8 +449,8 @@ export default function FestivalInfoPage() {
 
               <div className="mt-12 max-w-sm">
                 <p className="mb-8 text-base leading-7 text-black/70">
-                  Jangan cuma melihat dari jauh. Jadilah bagian dari pengalaman
-                  Z Fest 2026.
+                  Don’t just watch from afar. Be part of the Z Fest 2026
+                  experience.
                 </p>
 
                 <Link
