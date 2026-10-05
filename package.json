@@ -9,11 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@motionone/utils": "^10.18.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.1.0",
     "framer-motion": "^13.1.1",
     "lucide-react": "^1.47.0",
+    "motion": "^14.0.0",
     "next": "16.3.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
