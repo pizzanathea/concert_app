@@ -79,7 +79,9 @@ export default function Navbar() {
 
     onScroll();
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, {
+      passive: true,
+    });
 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -98,6 +100,10 @@ export default function Navbar() {
           : "border-b border-transparent bg-transparent",
       ].join(" ")}
     >
+      {/* =====================================================
+          NAVBAR
+      ====================================================== */}
+
       <nav className="flex items-center justify-between px-6 pb-4 pt-6 md:px-10 md:pt-7 lg:px-16">
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-3">
@@ -114,6 +120,7 @@ export default function Navbar() {
           animate="rest"
           className="group flex items-center gap-2 text-white/90"
         >
+          {/* MENU / OPEN TEXT */}
           <div className="relative h-5 w-12 overflow-hidden">
             <motion.span
               variants={{
@@ -231,7 +238,10 @@ export default function Navbar() {
             }}
             className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-black/95 backdrop-blur-lg"
           >
-            {/* CLOSE */}
+            {/* =================================================
+                CLOSE
+            ================================================== */}
+
             <div className="flex w-full items-center justify-end px-6 py-4 md:px-10 lg:px-16">
               <div className="flex translate-y-14 items-center gap-3">
                 <span className="text-sm font-medium tracking-wide text-white/80">
@@ -248,7 +258,10 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* MENU LIST */}
+            {/* =================================================
+                MENU LIST
+            ================================================== */}
+
             <ul className="flex flex-1 translate-y-16 flex-col items-start justify-center gap-8 px-20 py-10 text-4xl font-semibold text-white md:translate-y-20 md:gap-10 md:px-40 md:text-6xl lg:px-56">
               {menuItems.map((item, i) => {
                 const isVenue = item.hasSubmenu;
@@ -288,6 +301,7 @@ export default function Navbar() {
                     className="relative w-full max-w-5xl"
                   >
                     {/* NUMBER */}
+
                     <span className="absolute -left-7 -top-1 text-sm font-normal text-white/40 md:-left-10 md:text-base">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -299,6 +313,7 @@ export default function Navbar() {
                     {isVenue ? (
                       <div className="w-full">
                         {/* VENUE TITLE */}
+
                         <button
                           onClick={() => setVenueOpen(!venueOpen)}
                           className="group flex w-full items-center justify-between text-left"
@@ -307,9 +322,11 @@ export default function Navbar() {
                             {item.label}
                           </span>
 
+                          {/* ARROW */}
+
                           <motion.span
                             animate={{
-                              rotate: venueOpen ? 0 : 180,
+                              rotate: venueOpen ? 180 : 0,
                             }}
                             transition={{
                               duration: 0.35,
@@ -321,7 +338,10 @@ export default function Navbar() {
                           </motion.span>
                         </button>
 
-                        {/* SUB MENU */}
+                        {/* =================================================
+                            SUB MENU
+                        ================================================== */}
+
                         <AnimatePresence initial={false}>
                           {venueOpen && (
                             <motion.div
@@ -338,39 +358,60 @@ export default function Navbar() {
                                 opacity: 0,
                               }}
                               transition={{
-                                duration: 0.45,
+                                duration: 0.5,
                                 ease: [0.16, 1, 0.3, 1],
                               }}
                               className="overflow-hidden"
                             >
-                              <div className="ml-2 mt-7 border-l border-white/15 pl-6 md:ml-3 md:mt-9 md:pl-8">
+                              <div className="ml-2 mt-6 border-l border-white/10 pl-5 md:ml-3 md:mt-8 md:pl-7">
                                 {item.submenu?.map((subItem, subIndex) => (
                                   <motion.div
                                     key={subItem.href}
                                     initial={{
                                       opacity: 0,
-                                      x: -20,
+                                      x: -18,
                                     }}
                                     animate={{
                                       opacity: 1,
                                       x: 0,
                                     }}
+                                    exit={{
+                                      opacity: 0,
+                                      x: -10,
+                                    }}
                                     transition={{
-                                      delay: subIndex * 0.06,
-                                      duration: 0.35,
+                                      delay: subIndex * 0.075,
+                                      duration: 0.4,
+                                      ease: [0.16, 1, 0.3, 1],
                                     }}
                                   >
                                     <Link
                                       href={subItem.href}
                                       onClick={() => setMenuOpen(false)}
-                                      className="group/sub flex items-center justify-between border-b border-white/10 py-4 text-xl font-medium text-white/65 transition-colors duration-300 hover:text-amber-400 md:py-5 md:text-2xl"
+                                      className="group/sub flex items-center justify-between border-b border-white/[0.06] py-3 transition-all duration-500 md:py-3.5"
                                     >
-                                      <span>{subItem.label}</span>
+                                      {/* LEFT */}
+
+                                      <div className="flex items-center">
+                                        {/* DECORATIVE ARROW */}
+
+                                        <span className="mr-3 text-[10px] font-normal text-white/20 transition-all duration-500 group-hover/sub:mr-4 group-hover/sub:text-amber-300">
+                                          ↳
+                                        </span>
+
+                                        {/* LABEL */}
+
+                                        <span className="text-[9px] font-light uppercase tracking-[0.25em] text-white/45 transition-all duration-500 group-hover/sub:text-white md:text-[10px]">
+                                          {subItem.label}
+                                        </span>
+                                      </div>
+
+                                      {/* RIGHT ARROW */}
 
                                       <ArrowUpRight
-                                        size={18}
-                                        strokeWidth={1.5}
-                                        className="mr-2 opacity-30 transition-all duration-300 group-hover/sub:-translate-y-1 group-hover/sub:translate-x-1 group-hover/sub:opacity-100"
+                                        size={13}
+                                        strokeWidth={1.2}
+                                        className="mr-2 text-white/20 transition-all duration-500 group-hover/sub:-translate-y-0.5 group-hover/sub:translate-x-0.5 group-hover/sub:text-amber-300 group-hover/sub:opacity-100"
                                       />
                                     </Link>
                                   </motion.div>
@@ -382,7 +423,7 @@ export default function Navbar() {
                       </div>
                     ) : (
                       /* =================================================
-                          NORMAL MENU ITEM
+                         NORMAL MENU ITEM
                       ================================================== */
 
                       <Link
