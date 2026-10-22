@@ -1,46 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-
-const venueLinks = [
-  { label: "Arrive at Z Fest", href: "/venue/arrival" },
-  { label: "Find Your Way", href: "/venue/getting-there" },
-  { label: "Explore the Map", href: "/venue/map" },
-  { label: "Stay Nearby", href: "/venue/stay-nearby" },
-];
-
-export function VenueSubnav({ current }: { current: string }) {
-  return (
-    <nav
-      aria-label="The Venue pages"
-      className="border-b border-black/10 bg-white px-6 md:px-10 lg:px-16"
-    >
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-        className="mx-auto flex max-w-7xl gap-7 overflow-x-auto"
-      >
-        {venueLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            aria-current={current === link.href ? "page" : undefined}
-            className={`shrink-0 border-b py-4 text-[9px] font-medium uppercase tracking-[0.16em] transition-colors ${
-              current === link.href
-                ? "border-amber-500 text-black"
-                : "border-transparent text-black/40 hover:text-black"
-            }`}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </motion.div>
-    </nav>
-  );
-}
 
 export function VenuePageIntro({
   eyebrow,
