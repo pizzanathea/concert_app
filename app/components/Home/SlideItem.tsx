@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Slide } from "@/lib/slides";
+import BrandText from "@/app/components/ui/BrandText";
 
 export default function SlideItem({ slide }: { slide: Slide }) {
   if (slide.variant === "center") {
@@ -11,7 +12,7 @@ export default function SlideItem({ slide }: { slide: Slide }) {
           </p>
         )}
         <h1 className="text-5xl font-bold leading-tight text-white md:text-7xl">
-          {slide.title}
+          <BrandText text={slide.title} tone="on-dark" />
         </h1>
       </div>
     );
@@ -23,7 +24,7 @@ export default function SlideItem({ slide }: { slide: Slide }) {
       <div className="max-w-md text-center md:text-left">
         {slide.eyebrow && (
           <p className="mb-3 text-xs uppercase tracking-[0.3em] text-white/60">
-            {slide.eyebrow}
+            <BrandText text={slide.eyebrow} tone="on-dark" />
           </p>
         )}
         {slide.badgeLabel && (
@@ -32,7 +33,7 @@ export default function SlideItem({ slide }: { slide: Slide }) {
           </span>
         )}
         <h2 className="text-4xl font-extrabold text-white md:text-6xl">
-          {slide.title}
+          <BrandText text={slide.title} tone="on-dark" />
         </h2>
         {slide.subtitle && (
           <p className="mt-2 text-sm text-white/70">{slide.subtitle}</p>

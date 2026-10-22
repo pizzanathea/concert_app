@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock, AlertCircle, X, ShieldCheck } from "lucide-react";
+import BrandText from "@/app/components/ui/BrandText";
 
 type QueueOrder = {
   id: string;
@@ -183,7 +184,7 @@ export default function DashboardPage() {
               <span className="text-xs font-semibold uppercase tracking-wider text-neutral-500">
                 Penjualan umum / inventori
               </span>
-              <span className="text-xs text-neutral-400 font-medium">Z FEST 2026</span>
+              <span className="text-xs text-neutral-400 font-medium"><BrandText text="Z FEST 2026" /></span>
             </div>
 
             {/* Container Card Full Putih */}
@@ -372,7 +373,7 @@ export default function DashboardPage() {
               <div>
                 <h4 className="text-xl font-bold text-neutral-900">{selectedOrder.name}</h4>
                 <p className="mt-1 text-sm text-neutral-600">
-                  Z FEST 2026 · {selectedOrder.category} × {selectedOrder.qty} tiket
+                  <BrandText text="Z FEST 2026" /> · {selectedOrder.category} × {selectedOrder.qty} tiket
                 </p>
               </div>
 

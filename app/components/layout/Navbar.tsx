@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { X, ArrowDown, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion, useMotionValue } from "framer-motion";
 import MagneticIcon from "@/app/components/ui/MagneticIcon";
+import BrandText from "@/app/components/ui/BrandText";
 
 const menuItems = [
   { label: "Home", href: "/" },
@@ -108,7 +109,7 @@ export default function Navbar() {
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-3">
           <span className="hidden text-xl font-bold tracking-wide text-white sm:block">
-            Z FEST
+            <BrandText text="Z FEST" tone="on-dark" />
           </span>
         </Link>
 
@@ -402,7 +403,7 @@ export default function Navbar() {
                                         {/* LABEL */}
 
                                         <span className="text-[9px] font-light uppercase tracking-[0.25em] text-white/45 transition-all duration-500 group-hover/sub:text-white md:text-[10px]">
-                                          {subItem.label}
+                                          <BrandText text={subItem.label} tone="on-dark" />
                                         </span>
                                       </div>
 

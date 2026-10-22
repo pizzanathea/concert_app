@@ -5,6 +5,7 @@ import { Plus } from "lucide-react";
 import DataTable, { Column } from "@/app/components/admin/DataTable";
 import Modal from "@/app/components/admin/modal";
 import ConfirmDialog from "@/app/components/admin/ConfirmDialog";
+import BrandText from "@/app/components/ui/BrandText";
 
 type EventItem = {
   id: number;
@@ -29,7 +30,11 @@ export default function EventPage() {
   const [deleteTarget, setDeleteTarget] = useState<EventItem | null>(null);
 
   const columns: Column<EventItem>[] = [
-    { key: "nama", label: "Nama Event" },
+    {
+      key: "nama",
+      label: "Nama Event",
+      render: (row: EventItem) => <BrandText text={row.nama} />,
+    },
     { key: "tanggal", label: "Tanggal" },
     {
       key: "status",

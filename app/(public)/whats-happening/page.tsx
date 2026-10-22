@@ -10,6 +10,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import BrandText from "@/app/components/ui/BrandText";
 
 const days = [
   { id: 1, day: "FRI", date: "12 DEC", fullDate: "12 DECEMBER 2026" },
@@ -157,7 +158,7 @@ export default function ExperiencePage() {
             transition={{ duration: 0.7 }}
             className="mb-7 text-xs font-bold uppercase tracking-[0.35em] text-black/45"
           >
-            Z FEST 2026 / THE EXPERIENCE
+            <BrandText text="Z FEST 2026 / THE EXPERIENCE" />
           </motion.p>
 
           <motion.h1
@@ -173,8 +174,9 @@ export default function ExperiencePage() {
 
           <div className="mt-12 flex flex-col justify-between gap-8 border-t border-black/15 pt-6 md:flex-row md:items-end">
             <p className="max-w-md text-sm font-medium leading-7 text-black/60 md:text-base">
-              Three days. Different stages. Endless moments. Explore the full Z
-              Fest schedule and find the moment that belongs to you.
+              Three days. Different stages. Endless moments. Explore the full{" "}
+              <BrandText text="Z Fest" /> schedule and find the moment that
+              belongs to you.
             </p>
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em]">
               <span>Scroll to explore</span>
@@ -322,7 +324,7 @@ export default function ExperiencePage() {
                       {item.stage}
                     </p>
                     <h3 className="text-2xl font-black uppercase tracking-[-0.045em] transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">
-                      {item.title}
+                      <BrandText text={item.title} />
                     </h3>
                     <p className="mt-3 text-xs font-medium uppercase tracking-[0.15em] text-black/45">
                       {item.time} — {item.end}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState, type ReactNode } from "react";
 import { ArrowDown, ArrowUp, ArrowUpRight, Circle } from "lucide-react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import BrandText from "@/app/components/ui/BrandText";
 
 const breakdownSections = [
   {
@@ -12,7 +13,7 @@ const breakdownSections = [
     content: (
       <>
         <p>
-          Over the course of three days, Z Fest featured musical performances by
+          Over the course of three days, <BrandText text="Z Fest" /> featured musical performances by
           various local and international musicians, creative spaces, a food
           court, community events, and a variety of activities that made the
           festival experience feel like more than just watching concerts.
@@ -38,15 +39,15 @@ const breakdownSections = [
     content: (
       <>
         <p>
-          Z Fest began with a simple idea: to create a space where music,
+          <BrandText text="Z Fest" /> began with a simple idea: to create a space where music,
           creativity, and people could come together in a single experience.
-          From these humble beginnings, Z Fest has continued to grow alongside
+          From these humble beginnings, <BrandText text="Z Fest" /> has continued to grow alongside
           musicians, communities, creators, and people who believe that a
           festival is not just about the stage.
         </p>
 
         <p className="mt-7">
-          Today, Z Fest returns with the same spirit, but with even more
+          Today, <BrandText text="Z Fest" /> returns with the same spirit, but with even more
           experience. Each edition is part of a journey to create new moments
           and bring more people into this story.
         </p>
@@ -158,7 +159,7 @@ export default function FestivalInfoPage() {
                 }}
                 className="mb-7 text-xs uppercase tracking-[0.3em] text-amber-400"
               >
-                Z Fest 2026
+                <BrandText text="Z Fest 2026" />
               </motion.p>
 
               <motion.div
@@ -186,7 +187,7 @@ export default function FestivalInfoPage() {
                 <RevealText delay={0.2}>
                   <p className="text-base leading-7 text-black/50 md:text-lg">
                     Music, creativity, culture, and people come together in one
-                    unforgettable experience. Z Fest is not simply something you
+                    unforgettable experience. <BrandText text="Z Fest" /> is not simply something you
                     attend. It&apos;s something you become part of.
                   </p>
                 </RevealText>
@@ -293,16 +294,16 @@ export default function FestivalInfoPage() {
             <h2 className="text-[clamp(2.8rem,5vw,5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.055em]">
               About
               <br />
-              <span className="text-black/30">Z Fest.</span>
+              <span className="text-black/30"><BrandText text="Z Fest." /></span>
             </h2>
           </RevealText>
 
           <div className="max-w-2xl lg:pt-3">
             <RevealText delay={0.1}>
               <p className="text-base leading-8 text-black/55 md:text-lg">
-                Z Fest is an annual music festival that brings together local
+                <BrandText text="Z Fest" /> is an annual music festival that brings together local
                 and international musicians across genres in one grand
-                experience. More than just a concert, Z Fest serves as a
+                experience. More than just a concert, <BrandText text="Z Fest" /> serves as a
                 gathering place to celebrate music, creativity, culture, and
                 human connections.
               </p>
@@ -310,7 +311,7 @@ export default function FestivalInfoPage() {
 
             <RevealText delay={0.2}>
               <p className="mt-8 text-base leading-8 text-black/55 md:text-lg">
-                From the main stage to the creative space, every part of Z Fest
+                From the main stage to the creative space, every part of <BrandText text="Z Fest" />
                 is designed to create an experience that is not only heard, but
                 also felt.
               </p>
@@ -436,7 +437,7 @@ export default function FestivalInfoPage() {
 
             <div>
               <p className="mb-6 text-sm font-semibold uppercase tracking-[0.3em]">
-                Z Fest 2026
+                <BrandText text="Z Fest 2026" tone="on-amber" />
               </p>
 
               <h2 className="max-w-5xl text-[clamp(3.5rem,8vw,8rem)] font-semibold uppercase leading-[0.82] tracking-[-0.065em]">
@@ -449,7 +450,7 @@ export default function FestivalInfoPage() {
 
               <div className="mt-12 max-w-sm">
                 <p className="mb-8 text-base leading-7 text-black/70">
-                  Don’t just watch from afar. Be part of the Z Fest 2026
+                  Don’t just watch from afar. Be part of the <BrandText text="Z Fest 2026" tone="on-amber" />
                   experience.
                 </p>
 
@@ -553,7 +554,7 @@ function BreakdownItem({
             }}
             className="mb-3 text-[10px] uppercase tracking-[0.3em] text-black/30"
           >
-            {section.subtitle}
+            <BrandText text={section.subtitle} />
           </motion.p>
 
           <div className="overflow-hidden">
@@ -683,7 +684,7 @@ function ManifestoSection() {
           }}
           className="mb-10 text-[10px] uppercase tracking-[0.35em] text-amber-400"
         >
-          The Z Fest experience
+          The <BrandText text="Z Fest" tone="on-dark" /> experience
         </motion.p>
 
         <ManifestoLine text="Come for the" inView={inView} />

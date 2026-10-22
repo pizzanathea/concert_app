@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
 import TicketNav from "@/app/components/Ticket/TicketNav";
+import BrandText from "@/app/components/ui/BrandText";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -131,10 +132,10 @@ export default function AdminLoginPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5 text-xs text-white/60 lg:px-10">
           <div className="flex items-center gap-4">
             <span className="text-lg font-extrabold tracking-tight text-white">
-              Z<span className="text-amber-400">FEST</span>
+              <span className="text-amber-400">Z</span><span className="text-amber-400">FEST</span>
             </span>
             <span className="hidden sm:inline">
-              &copy; 2026 Z Fest. All Rights Reserved
+              &copy; 2026 <BrandText text="Z Fest" tone="on-dark" />. All Rights Reserved
             </span>
           </div>
           <Link href="/terms" className="text-amber-400 transition-colors hover:underline">

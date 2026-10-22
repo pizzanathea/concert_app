@@ -1,5 +1,6 @@
 import AdminHeader from "@/app/components/admin/AdminHeader";
 import Link from "next/link";
+import BrandText from "@/app/components/ui/BrandText";
 
 export default function DashboardLayout({
   children,
@@ -16,10 +17,10 @@ export default function DashboardLayout({
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-5 text-xs text-neutral-500 md:px-8">
           <div className="flex items-center gap-4">
             <span className="text-lg font-extrabold tracking-tight text-neutral-900">
-              Z<span className="text-amber-500">FEST</span>
+              <span className="text-amber-600">Z</span><span className="text-amber-500">FEST</span>
             </span>
             <span className="hidden sm:inline">
-              &copy; 2026 Z Fest. All Rights Reserved
+              &copy; 2026 <BrandText text="Z Fest" />. All Rights Reserved
             </span>
           </div>
           <Link href="/terms" className="text-amber-600 font-semibold transition-colors hover:underline">

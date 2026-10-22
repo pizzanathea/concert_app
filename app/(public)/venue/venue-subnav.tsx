@@ -9,8 +9,8 @@ export function VenuePageIntro({
   description,
   dark = false,
 }: {
-  eyebrow: string;
-  title: React.ReactNode;
+  eyebrow: ReactNode;
+  title: ReactNode;
   description: string;
   dark?: boolean;
 }) {

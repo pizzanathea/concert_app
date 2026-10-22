@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ScrollVelocity from "@/app/components/ui/ScroolVelocity";
+import BrandText from "@/app/components/ui/BrandText";
 import { VenuePageIntro, VenueReveal } from "../venue-subnav";
 
 const travelOptions = [
@@ -70,7 +71,11 @@ export default function GettingTherePage() {
   return (
     <main className="min-h-screen bg-white text-black">
       <VenuePageIntro
-        eyebrow="02 / Getting there · Z Fest 2026"
+        eyebrow={
+          <>
+            02 / Getting there · <BrandText text="Z Fest 2026" />
+          </>
+        }
         title={
           <>
             THE WAY THERE
@@ -195,7 +200,12 @@ export default function GettingTherePage() {
 
       <section className="overflow-hidden border-y border-black/10 bg-white py-5">
         <ScrollVelocity
-          texts={["TAKE THE SCENIC ROUTE — MEET US AT Z FEST —"]}
+          texts={[
+            <>
+              TAKE THE SCENIC ROUTE — MEET US AT{" "}
+              <BrandText text="Z FEST" tone="on-dark" /> —
+            </>,
+          ]}
           velocity={2.5}
           direction="left"
           numCopies={8}

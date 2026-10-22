@@ -11,6 +11,7 @@ import {
   Ticket,
 } from "lucide-react";
 import { VenuePageIntro, VenueReveal } from "../venue-subnav";
+import BrandText from "@/app/components/ui/BrandText";
 
 const gates = [
   {
@@ -36,7 +37,11 @@ export default function VenueMapPage() {
   return (
     <main className="min-h-screen bg-[#080706] text-white">
       <VenuePageIntro
-        eyebrow="03 / Festival map · Z Fest 2026"
+        eyebrow={
+          <>
+            03 / Festival map · <BrandText text="Z Fest 2026" tone="on-dark" />
+          </>
+        }
         title={
           <>
             KNOW YOUR
@@ -77,7 +82,7 @@ export default function VenueMapPage() {
                       Festival grounds
                     </span>
                     <span className="mt-3 text-2xl font-medium tracking-[-0.05em] md:text-4xl">
-                      Z FEST
+                      <BrandText text="Z FEST" tone="on-dark" />
                     </span>
                     <span className="mt-1 text-[8px] uppercase tracking-[0.25em] text-amber-200/50">
                       Jakarta · 2026

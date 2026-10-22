@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import BrandText from "@/app/components/ui/BrandText";
 
 const storySections = [
   {
@@ -40,7 +41,7 @@ export default function HistoryPage() {
             transition={{ duration: 0.7 }}
             className="mb-8 text-xs font-bold uppercase tracking-[0.35em] text-black/45"
           >
-            Z FEST 2026 / OUR FIRST TIME
+            <BrandText text="Z FEST 2026 / OUR FIRST TIME" />
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 70 }}
@@ -62,7 +63,7 @@ export default function HistoryPage() {
               className="max-w-md text-sm font-medium leading-7 text-black/60 md:text-base"
             >
               Every great moment has a beginning. This is the story of the first
-              time Z Fest became more than just an idea.
+              time <BrandText text="Z Fest" /> became more than just an idea.
             </motion.p>
             <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.3em]">
               <span>Scroll to discover</span>
@@ -94,7 +95,7 @@ export default function HistoryPage() {
                   {section.title}
                 </h2>
                 <p className="mt-8 max-w-lg text-sm font-medium leading-7 text-black/60 md:text-base">
-                  {section.text}
+                  <BrandText text={section.text} />
                 </p>
               </motion.div>
               <motion.div
@@ -112,7 +113,7 @@ export default function HistoryPage() {
                   className="h-[55vh] min-h-[420px] w-full object-cover"
                 />
                 <div className="absolute bottom-5 left-5 bg-white px-4 py-3 text-[9px] font-bold uppercase tracking-[0.25em]">
-                  Z FEST / FIRST MOMENT
+                  <BrandText text="Z FEST / FIRST MOMENT" />
                 </div>
               </motion.div>
             </div>

@@ -12,6 +12,7 @@ import {
   TrainFront,
 } from "lucide-react";
 import { VenuePageIntro, VenueReveal } from "../venue-subnav";
+import BrandText from "@/app/components/ui/BrandText";
 
 const planningTasks = [
   {
@@ -57,7 +58,11 @@ export default function StayNearbyPage() {
   return (
     <main className="min-h-screen bg-[#f7f5f0] text-black">
       <VenuePageIntro
-        eyebrow="04 / Stay nearby · Z Fest 2026"
+        eyebrow={
+          <>
+            04 / Stay nearby · <BrandText text="Z Fest 2026" />
+          </>
+        }
         title={
           <>
             MAKE A WEEKEND

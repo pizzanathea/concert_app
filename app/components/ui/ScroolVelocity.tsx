@@ -9,7 +9,7 @@ import {
 } from "motion/react";
 
 interface ScrollVelocityProps {
-  texts: string[];
+  texts: React.ReactNode[];
   velocity?: number;
   className?: string;
   numCopies?: number;

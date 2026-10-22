@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -9,6 +10,7 @@ import {
 } from "lucide-react";
 import ScrollVelocity from "@/app/components/ui/ScroolVelocity";
 import TechText from "@/app/components/ui/TextTech";
+import BrandText from "@/app/components/ui/BrandText";
 import { VenueReveal } from "./venue-subnav";
 
 const venuePages = [
@@ -61,7 +63,7 @@ export default function VenueOverview() {
           <div className="relative z-10">
             <div className="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.35em] text-amber-300">
               <span className="h-px w-8 bg-amber-300" />
-              The Venue · Z Fest 2026
+              The Venue · <BrandText text="Z Fest 2026" tone="on-dark" />
             </div>
             <div className="mt-10 max-w-6xl">
               <TechText
@@ -112,7 +114,7 @@ export default function VenueOverview() {
             <div className="mt-8 flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between lg:justify-start lg:gap-12">
               <p className="max-w-md text-sm leading-7 text-white/60 md:text-base">
                 Plan your journey, choose the right entrance, and get ready for
-                your days at Z Fest.
+                your days at <BrandText text="Z Fest" tone="on-dark" />.
               </p>
               <Link
                 href="#venue-guides"
@@ -145,7 +147,7 @@ export default function VenueOverview() {
                 12—14 December
               </span>
               <span className="mt-3 text-2xl font-semibold tracking-[-0.06em] md:text-3xl">
-                Z FEST
+                <BrandText text="Z FEST" tone="on-dark" />
               </span>
               <span className="mt-1 text-[8px] uppercase tracking-[0.3em] text-amber-300">
                 Jakarta · 2026
@@ -192,7 +194,12 @@ export default function VenueOverview() {
             className="text-3xl font-medium uppercase leading-none tracking-[-0.04em] text-black md:text-5xl lg:text-6xl"
           />
           <ScrollVelocity
-            texts={["Z FEST — 12—14 DECEMBER — JAKARTA —"]}
+            texts={[
+              <Fragment key="venue-brand-marquee">
+                <BrandText text="Z FEST" tone="on-dark" /> — 12—14 DECEMBER —
+                JAKARTA —
+              </Fragment>,
+            ]}
             velocity={3}
             direction="right"
             numCopies={8}
@@ -245,7 +252,7 @@ export default function VenueOverview() {
                   />
                 </div>
                 <h3 className="mt-8 text-2xl font-medium tracking-[-0.03em] md:text-3xl">
-                  {title}
+                  <BrandText text={title} tone="on-dark" />
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-6 text-black/50">
                   {description}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import DataTable, { Column } from "@/app/components/admin/DataTable";
 import ConfirmDialog from "@/app/components/admin/ConfirmDialog";
+import BrandText from "@/app/components/ui/BrandText";
 
 type Pesanan = {
   id: number;
@@ -34,7 +35,11 @@ export default function PesananPage() {
 
   const columns: Column<Pesanan>[] = [
     { key: "pembeli", label: "Nama Pembeli" },
-    { key: "event", label: "Event" },
+    {
+      key: "event",
+      label: "Event",
+      render: (row: Pesanan) => <BrandText text={row.event} />,
+    },
     { key: "kelas", label: "Kelas" },
     { key: "total", label: "Total", render: (row: Pesanan) => formatRupiah(row.total) },
     {

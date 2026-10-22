@@ -1,5 +1,6 @@
 import Link from "next/link";
 import TicketNav from "@/app/components/Ticket/TicketNav";
+import BrandText from "@/app/components/ui/BrandText";
 
 const reasons = [
   {
@@ -26,13 +27,13 @@ export default function TicketsPage() {
       <main className="flex min-h-0 flex-1 flex-col items-center justify-center px-6">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-semibold uppercase tracking-widest text-amber-600">
-            Z Fest 2026
+            <BrandText text="Z Fest 2026" />
           </span>
           <h1 className="mt-3 text-4xl font-extrabold text-[#0a0500] md:text-5xl">
             Pesan Tiket Lewat Aplikasi Mobile
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm text-neutral-600 md:text-base">
-            Semua transaksi tiket Z Fest cuma bisa dilakukan lewat aplikasi
+            Semua transaksi tiket <BrandText text="Z Fest" /> cuma bisa dilakukan lewat aplikasi
             resmi kami. Download sekarang biar gak kehabisan tiket kelas favorit
             kamu.
           </p>
@@ -59,10 +60,10 @@ export default function TicketsPage() {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4 text-xs text-white/60 lg:px-10">
           <div className="flex items-center gap-4">
             <span className="text-lg font-extrabold tracking-tight text-white">
-              Z<span className="text-amber-400">FEST</span>
+              <span className="text-amber-400">Z</span><span className="text-amber-400">FEST</span>
             </span>
             <span className="hidden sm:inline">
-              &copy; 2026 Z Fest. All Rights Reserved
+              &copy; 2026 <BrandText text="Z Fest" tone="on-dark" />. All Rights Reserved
             </span>
           </div>
           <Link href="/terms" className="text-amber-400 hover:underline">
