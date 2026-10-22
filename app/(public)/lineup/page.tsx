@@ -30,11 +30,11 @@ export default function LineupPage() {
   const [activeDay, setActiveDay] = useState(1);
   const currentDay = lineupDays.find((day) => day.id === activeDay)!;
   const { scrollY } = useScroll();
-  const backgroundTextX = useTransform(scrollY, [0, 700], [0, -300]);
+  const backgroundTextX = useTransform(scrollY, [0, 1100], [0, -420]);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f5f0] text-black">
-      <section className="relative isolate flex min-h-[68vh] flex-col justify-end overflow-hidden bg-[#080706] px-6 pb-14 pt-32 text-white md:min-h-[72vh] md:px-10 md:pb-20 lg:px-16">
+      <section className="relative isolate flex min-h-[calc(100svh+12rem)] flex-col justify-start overflow-hidden bg-[#080706] px-6 pb-16 pt-32 text-white md:min-h-[calc(100svh+18rem)] md:px-10 md:pb-24 md:pt-40 lg:px-16">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_38%,rgba(245,158,11,0.2),transparent_35%),radial-gradient(ellipse_at_12%_90%,rgba(180,83,9,0.15),transparent_42%),linear-gradient(115deg,#080706_25%,#120d07_100%)]"
@@ -47,10 +47,14 @@ export default function LineupPage() {
           aria-hidden="true"
           className="pointer-events-none absolute -right-8 top-[33%] h-32 w-56 rotate-[-28deg] rounded-[45%] bg-orange-500/[0.12] blur-[55px] md:right-[17%] md:top-[27%] md:h-52 md:w-80"
         />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[22rem] bg-[linear-gradient(to_bottom,transparent_0%,rgba(8,7,6,0.12)_18%,rgba(247,245,240,0.58)_72%,#f7f5f0_100%)] md:h-[28rem]"
+        />
         <motion.div
           aria-hidden="true"
           style={{ x: backgroundTextX }}
-          className="pointer-events-none absolute left-[-24%] top-[32%] z-0 w-max whitespace-nowrap text-[24vw] font-black uppercase leading-none tracking-[-0.09em] text-white/[0.055] md:top-[27%] md:text-[19vw]"
+          className="pointer-events-none absolute left-[-24%] top-[22%] z-0 w-max whitespace-nowrap text-[24vw] font-black uppercase leading-none tracking-[-0.09em] text-white/[0.055] md:top-[19%] md:text-[19vw]"
         >
           ARTIST LINEUP&nbsp;&nbsp;&nbsp;ARTIST LINEUP
         </motion.div>
