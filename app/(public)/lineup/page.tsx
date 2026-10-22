@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import BrandText from "@/app/components/ui/BrandText";
 import ScrambledText from "@/app/components/ui/ScrambledText";
 
@@ -29,6 +29,8 @@ const lineupDays = [
 export default function LineupPage() {
   const [activeDay, setActiveDay] = useState(1);
   const currentDay = lineupDays.find((day) => day.id === activeDay)!;
+  const { scrollY } = useScroll();
+  const backgroundTextX = useTransform(scrollY, [0, 700], [0, -300]);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#f7f5f0] text-black">
@@ -45,8 +47,15 @@ export default function LineupPage() {
           aria-hidden="true"
           className="pointer-events-none absolute -right-8 top-[33%] h-32 w-56 rotate-[-28deg] rounded-[45%] bg-orange-500/[0.12] blur-[55px] md:right-[17%] md:top-[27%] md:h-52 md:w-80"
         />
+        <motion.div
+          aria-hidden="true"
+          style={{ x: backgroundTextX }}
+          className="pointer-events-none absolute left-[-24%] top-[32%] z-0 w-max whitespace-nowrap text-[24vw] font-black uppercase leading-none tracking-[-0.09em] text-white/[0.055] md:top-[27%] md:text-[19vw]"
+        >
+          ARTIST LINEUP&nbsp;&nbsp;&nbsp;ARTIST LINEUP
+        </motion.div>
 
-        <div className="relative mx-auto w-full max-w-7xl">
+        <div className="relative z-10 mx-auto w-full max-w-7xl">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,9 +73,9 @@ export default function LineupPage() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 max-w-5xl text-[19vw] font-black uppercase leading-[0.77] tracking-[-0.085em] sm:text-[16vw] md:text-[13vw] lg:text-[11vw]"
           >
-            SOUND
+            ARTIST
             <br />
-            <span className="ml-[8vw] text-amber-400">IN MOTION.</span>
+            <span className="ml-[8vw] text-amber-400">LINEUP.</span>
           </motion.h1>
 
           <motion.div
