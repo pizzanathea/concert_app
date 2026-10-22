@@ -16,19 +16,19 @@ const menuItems = [
     submenu: [
       {
         label: "Arrive at Z Fest",
-        href: "/venue#arrive",
+        href: "/venue/arrival",
       },
       {
         label: "Find Your Way",
-        href: "/venue#getting-there",
+        href: "/venue/getting-there",
       },
       {
         label: "Explore the Map",
-        href: "/venue#festival-map",
+        href: "/venue/map",
       },
       {
         label: "Stay Nearby",
-        href: "/venue#stay-nearby",
+        href: "/venue/stay-nearby",
       },
     ],
   },
