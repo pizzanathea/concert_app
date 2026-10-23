@@ -34,7 +34,16 @@ const menuItems = [
     ],
   },
   { label: "Artists Lineup", href: "/lineup" },
-  { label: "Schedule", href: "/schedule" },
+  {
+    label: "Schedule",
+    href: "/schedule",
+    hasSubmenu: true,
+    submenu: [
+      { label: "Friday · 12 Dec", href: "/schedule/friday" },
+      { label: "Saturday · 13 Dec", href: "/schedule/saturday" },
+      { label: "Sunday · 14 Dec", href: "/schedule/sunday" },
+    ],
+  },
   { label: "Pre Event", href: "/pre-event" },
   { label: "Live Streaming", href: "/live" },
   { label: "Take a Part", href: "/take-a-part" },
@@ -45,7 +54,7 @@ const menuItems = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [venueOpen, setVenueOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   const dotX = useMotionValue(0);
   const dotY = useMotionValue(0);
@@ -89,7 +98,7 @@ export default function Navbar() {
 
   const closeMenu = () => {
     setMenuOpen(false);
-    setVenueOpen(false);
+    setOpenSubmenu(null);
   };
 
   return (
@@ -265,7 +274,8 @@ export default function Navbar() {
 
             <ul className="flex flex-1 translate-y-16 flex-col items-start justify-center gap-8 px-20 py-10 text-4xl font-semibold text-white md:translate-y-20 md:gap-10 md:px-40 md:text-6xl lg:px-56">
               {menuItems.map((item, i) => {
-                const isVenue = item.hasSubmenu;
+                const hasSubmenu = item.hasSubmenu;
+                const isOpen = openSubmenu === item.label;
 
                 return (
                   <motion.li
@@ -311,12 +321,14 @@ export default function Navbar() {
                         THE VENUE
                     ================================================== */}
 
-                    {isVenue ? (
+                    {hasSubmenu ? (
                       <div className="w-full">
                         {/* VENUE TITLE */}
 
                         <button
-                          onClick={() => setVenueOpen(!venueOpen)}
+                          onClick={() =>
+                            setOpenSubmenu(isOpen ? null : item.label)
+                          }
                           className="group flex w-full items-center justify-between text-left"
                         >
                           <span className="inline-block origin-left transition-all duration-300 ease-out group-hover:-skew-x-6 group-hover:text-amber-400">
@@ -327,7 +339,7 @@ export default function Navbar() {
 
                           <motion.span
                             animate={{
-                              rotate: venueOpen ? 180 : 0,
+                              rotate: isOpen ? 180 : 0,
                             }}
                             transition={{
                               duration: 0.35,
@@ -344,7 +356,7 @@ export default function Navbar() {
                         ================================================== */}
 
                         <AnimatePresence initial={false}>
-                          {venueOpen && (
+                          {isOpen && (
                             <motion.div
                               initial={{
                                 height: 0,
