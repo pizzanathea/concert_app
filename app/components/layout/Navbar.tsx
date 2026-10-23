@@ -46,7 +46,22 @@ const menuItems = [
     ],
   },
   { label: "Pre Event", href: "/pre-event" },
-  { label: "Take a Part", href: "/take-a-part" },
+  {
+    label: "Get Involved",
+    href: "/get-involved",
+    hasSubmenu: true,
+    submenu: [
+      { label: "Sponsors", href: "/get-involved#sponsors" },
+      { label: "Partners", href: "/get-involved#partners" },
+      { label: "Food Tenant", href: "/get-involved#food-tenant" },
+      { label: "Media Partners", href: "/get-involved#media-partners" },
+      {
+        label: "Media Registration",
+        href: "/get-involved#media-registration",
+      },
+      { label: "Volunteer", href: "/get-involved#volunteer" },
+    ],
+  },
   { label: "Tickets", href: "/Tickets" },
   { label: "F.A.Q", href: "/faq" },
 ];

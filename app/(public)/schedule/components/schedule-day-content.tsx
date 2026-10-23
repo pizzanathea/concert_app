@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUp, Download } from "lucide-react";
-import type { ScheduleDay, ScheduleEntry } from "./schedule-data";
+import type { ScheduleDay, ScheduleEntry } from "../data/schedule-data";
 
 const stageNames = [
   "FESTIVAL GROUNDS",

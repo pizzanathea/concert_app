@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import ScheduleDayContent from "../schedule-day-content";
-import { scheduleDays } from "../schedule-data";
+import ScheduleDayContent from "../components/schedule-day-content";
+import { scheduleDays } from "../data/schedule-data";
 
 export function generateStaticParams() {
   return scheduleDays.map((day) => ({ day: day.slug }));
