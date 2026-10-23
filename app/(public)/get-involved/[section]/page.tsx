@@ -3,16 +3,12 @@ import { opportunities } from "../data/get-involved-data";
 import SponsorsPage from "../components/sponsors-page";
 import PartnersPage from "../components/partners-page";
 import FoodTenantPage from "../components/food-tenant-page";
-import MediaPartnersPage from "../components/media-partners-page";
-import MediaRegistrationPage from "../components/media-registration-page";
 import VolunteerPage from "../components/volunteer-page";
 
 const sectionPages = {
   sponsors: SponsorsPage,
   partners: PartnersPage,
   "food-tenant": FoodTenantPage,
-  "media-partners": MediaPartnersPage,
-  "media-registration": MediaRegistrationPage,
   volunteer: VolunteerPage,
 } as const;
 

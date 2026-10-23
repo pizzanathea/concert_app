@@ -2,8 +2,6 @@ import {
   Handshake,
   HeartHandshake,
   Mic2,
-  Newspaper,
-  Radio,
   Utensils,
 } from "lucide-react";
 
@@ -149,50 +147,8 @@ export const opportunities = [
     ],
   },
   {
-    id: "media-partners",
-    number: "04",
-    label: "MEDIA PARTNERS",
-    menuLabel: "Media Partners",
-    title: "Tell the story with us.",
-    description:
-      "Pair your platform and audience with the sounds, people, and scenes shaping this year’s festival.",
-    detail: "Editorial features · Broadcast · Content collaborations",
-    icon: Radio,
-    pageTitle: "Media Partners",
-    pageIntro:
-      "Work with Z Fest to bring the music, artists, and community to audiences before, during, and after festival weekend.",
-    pageSectionTitle: "Story formats",
-    pageDetails: [
-      "Artist and behind-the-scenes features",
-      "Live coverage and broadcast collaborations",
-      "Festival guides and audience stories",
-      "Original short-form and social content",
-    ],
-  },
-  {
-    id: "media-registration",
-    number: "05",
-    label: "MEDIA REGISTRATION",
-    menuLabel: "Media Registration",
-    title: "Get closer to the story.",
-    description:
-      "Journalists, photographers, and creators can register their interest in covering Z Fest and its surrounding program.",
-    detail: "Press · Photo · Video · Digital creators",
-    icon: Newspaper,
-    pageTitle: "Media Registration",
-    pageIntro:
-      "Press, photo, video, and digital media professionals can prepare to request access to cover Z Fest.",
-    pageSectionTitle: "Have this ready",
-    pageDetails: [
-      "Your name, role, and media organization",
-      "A short description of your coverage plan",
-      "Examples or links to recent published work",
-      "The channels and audience your coverage serves",
-    ],
-  },
-  {
     id: "volunteer",
-    number: "06",
+    number: "04",
     label: "VOLUNTEERS",
     menuLabel: "Volunteer",
     title: "Be part of the crew.",
@@ -202,7 +158,7 @@ export const opportunities = [
     icon: Mic2,
     pageTitle: "Volunteer Crew",
     pageIntro:
-      "Be one of the people who make the whole experience feel effortless. Bring your curiosity, care, and team spirit.",
+      "Find your place behind the scenes—from guest services and F&B to creative production and access control. Bring your curiosity, care, and team spirit.",
     pageSectionTitle: "Find your crew",
     pageDetails: [
       "Guest welcome and information",

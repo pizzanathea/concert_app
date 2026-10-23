@@ -54,11 +54,6 @@ const menuItems = [
       { label: "Sponsors", href: "/get-involved/sponsors" },
       { label: "Partners", href: "/get-involved/partners" },
       { label: "Food Tenant", href: "/get-involved/food-tenant" },
-      { label: "Media Partners", href: "/get-involved/media-partners" },
-      {
-        label: "Media Registration",
-        href: "/get-involved/media-registration",
-      },
       { label: "Volunteer", href: "/get-involved/volunteer" },
     ],
   },
