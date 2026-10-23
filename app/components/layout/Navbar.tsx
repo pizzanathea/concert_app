@@ -48,7 +48,7 @@ const menuItems = [
   { label: "Pre Event", href: "/pre-event" },
   {
     label: "Get Involved",
-    href: "/get-involved",
+    href: "/get-involved/sponsors",
     hasSubmenu: true,
     submenu: [
       { label: "Sponsors", href: "/get-involved/sponsors" },
@@ -110,6 +110,32 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const previousStyles = {
+      overflow: body.style.overflow,
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+    };
+
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+
+    return () => {
+      body.style.overflow = previousStyles.overflow;
+      body.style.position = previousStyles.position;
+      body.style.top = previousStyles.top;
+      body.style.width = previousStyles.width;
+      window.scrollTo(0, scrollY);
+    };
+  }, [menuOpen]);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -263,13 +289,13 @@ export default function Navbar() {
                 delay: 0.45,
               },
             }}
-            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-black/95 backdrop-blur-lg"
+            className="fixed inset-0 z-[60] flex h-dvh flex-col overflow-x-hidden overflow-y-auto overscroll-contain bg-black/95 backdrop-blur-lg"
           >
             {/* =================================================
                 CLOSE
             ================================================== */}
 
-            <div className="flex w-full items-center justify-end px-6 py-4 md:px-10 lg:px-16">
+            <div className="sticky top-0 z-10 flex w-full shrink-0 items-center justify-end bg-black/95 px-6 py-4 md:px-10 lg:px-16">
               <div className="flex translate-y-14 items-center gap-3">
                 <span className="text-sm font-medium tracking-wide text-white/80">
                   Close

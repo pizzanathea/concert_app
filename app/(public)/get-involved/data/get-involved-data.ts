@@ -65,7 +65,7 @@ export const opportunities = [
     icon: HeartHandshake,
     pageTitle: "Festival Partners",
     pageIntro:
-      "Good collaborations make the festival reach beyond the stage. We welcome ideas that add value for artists, audiences, and local communities.",
+      "A preview of brands that could join Z Fest as festival partners. These names are visual references only—not confirmed Z Fest partners.",
     pageSectionTitle: "Ways to collaborate",
     pageDetails: [
       "Build a cultural or community program",

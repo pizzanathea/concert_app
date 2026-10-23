@@ -10,22 +10,13 @@ export default function GetInvolvedSection({ sectionId }: { sectionId: string })
   const opportunity = opportunities.find((item) => item.id === sectionId);
   if (!opportunity) return null;
 
-  const isSponsors = opportunity.id === "sponsors";
+  const isSponsorsOrPartners =
+    opportunity.id === "sponsors" || opportunity.id === "partners";
 
   return (
     <main className="min-h-screen bg-[#f7f7f6] text-[#17140f]">
       <section className="px-6 pb-12 pt-32 md:px-10 md:pb-16 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <Link
-            href="/get-involved"
-            className="group mb-12 inline-flex items-center gap-2 text-xs text-black/50 transition-colors hover:text-amber-800"
-          >
-            <ArrowLeft
-              size={14}
-              className="transition-transform group-hover:-translate-x-1"
-            />
-            All ways to get involved
-          </Link>
+        <div className="mx-auto max-w-7xl"> 
 
           <motion.div
             initial={{ opacity: 0, y: 22 }}
@@ -44,7 +35,7 @@ export default function GetInvolvedSection({ sectionId }: { sectionId: string })
             </p>
           </motion.div>
 
-          {isSponsors ? (
+          {isSponsorsOrPartners ? (
             <>
               <div className="grid grid-cols-2 border-l border-t border-black/[0.08] sm:grid-cols-3 lg:grid-cols-5">
                 {sponsorNames.map((sponsor, index) => (
@@ -70,7 +61,7 @@ export default function GetInvolvedSection({ sectionId }: { sectionId: string })
                 ))}
               </div>
               <p className="mt-5 text-center text-[8px] font-medium uppercase tracking-[0.16em] text-black/35">
-                Brand examples · Concept only · Not an official sponsor list
+                Brand examples · Concept only · Not an official sponsor or partner list
               </p>
             </>
           ) : (
