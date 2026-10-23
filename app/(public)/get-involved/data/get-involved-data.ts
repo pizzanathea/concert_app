@@ -32,6 +32,59 @@ export const sponsorNames = [
   },
 ] as const;
 
+export const foodTenantBrands = [
+  {
+    name: "YOSHINOYA",
+    logo: "/images/food-tenant/Yoshinoya-01.png",
+    category: "Japanese beef bowls",
+  },
+  {
+    name: "Shihlin Taiwan Street Snacks",
+    logo: "/images/food-tenant/SHIHLIN-100%20(1).svg",
+    category: "Taiwanese street food",
+  },
+  {
+    name: "Gindaco",
+    logo: "/images/food-tenant/5c19e5942a63953d3d7f228b4f5c1c79.webp",
+    category: "Japanese takoyaki",
+  },
+  {
+    name: "HokBen",
+    logo: "/images/food-tenant/HokBen_new_logo.png",
+    category: "Japanese-inspired meals",
+  },
+  {
+    name: "Richeese Factory",
+    logo: "/images/food-tenant/Richeese_Factory_Logo.jpg",
+    category: "Chicken & cheesy snacks",
+  },
+  {
+    name: "Bakmi GM",
+    logo: "/images/food-tenant/images%20(1).jpeg",
+    category: "Noodles & comfort food",
+  },
+  {
+    name: "Chatime",
+    logo: "/images/food-tenant/chatime-logo-png_seeklogo-338394.svg",
+    category: "Tea & refreshments",
+  },
+  {
+    name: "Sour Sally",
+    logo: "/images/food-tenant/LOGO-SOUR-SALLY-04.png",
+    category: "Frozen yogurt",
+  },
+  {
+    name: "Burger Bangor",
+    logo: "/images/food-tenant/burgerbangor-izdqf2-xl.svg",
+    category: "Burgers",
+  },
+  {
+    name: "Doner Kebab",
+    logo: "/images/food-tenant/A8EWW01.svg",
+    category: "Kebab & wraps",
+  },
+] as const;
+
 export const opportunities = [
   {
     id: "sponsors",
@@ -86,7 +139,7 @@ export const opportunities = [
     icon: Utensils,
     pageTitle: "Food Tenants",
     pageIntro:
-      "A great festival has its own flavor. We are making room for food and drink concepts that keep the crowd fueled between sets.",
+      "From Japanese comfort food to quick festival snacks, here are a few familiar brands imagined at Z Fest. This is a concept lineup, not a confirmed tenant list.",
     pageSectionTitle: "What makes a good fit",
     pageDetails: [
       "A focused menu that can be served efficiently",

@@ -1,6 +1,20 @@
 import { notFound } from "next/navigation";
-import GetInvolvedSection from "../components/get-involved-section";
 import { opportunities } from "../data/get-involved-data";
+import SponsorsPage from "../components/sponsors-page";
+import PartnersPage from "../components/partners-page";
+import FoodTenantPage from "../components/food-tenant-page";
+import MediaPartnersPage from "../components/media-partners-page";
+import MediaRegistrationPage from "../components/media-registration-page";
+import VolunteerPage from "../components/volunteer-page";
+
+const sectionPages = {
+  sponsors: SponsorsPage,
+  partners: PartnersPage,
+  "food-tenant": FoodTenantPage,
+  "media-partners": MediaPartnersPage,
+  "media-registration": MediaRegistrationPage,
+  volunteer: VolunteerPage,
+} as const;
 
 export function generateStaticParams() {
   return opportunities.map((opportunity) => ({
@@ -14,11 +28,12 @@ export default async function GetInvolvedSectionPage({
   params: Promise<{ section: string }>;
 }) {
   const { section } = await params;
-  const opportunityExists = opportunities.some((item) => item.id === section);
+  const SectionPage =
+    sectionPages[section as keyof typeof sectionPages];
 
-  if (!opportunityExists) {
+  if (!SectionPage || !opportunities.some((item) => item.id === section)) {
     notFound();
   }
 
-  return <GetInvolvedSection sectionId={section} />;
+  return <SectionPage />;
 }
