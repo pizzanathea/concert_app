@@ -46,7 +46,6 @@ const menuItems = [
     ],
   },
   { label: "Pre Event", href: "/pre-event" },
-  { label: "Live Streaming", href: "/live" },
   { label: "Take a Part", href: "/take-a-part" },
   { label: "Tickets", href: "/Tickets" },
   { label: "F.A.Q", href: "/faq" },
