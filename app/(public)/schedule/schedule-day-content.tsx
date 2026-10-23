@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUp, Download } from "lucide-react";
 import type { ScheduleDay, ScheduleEntry } from "./schedule-data";
 
 const stageNames = [
@@ -56,6 +57,24 @@ export default function ScheduleDayContent({ day }: { day: ScheduleDay }) {
             <p className="mt-3 text-[9px] font-medium uppercase tracking-[0.22em] text-black/40">
               Scroll sideways to explore every stage
             </p>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-black/75 transition-colors hover:text-black"
+            >
+              <Download aria-hidden="true" size={18} strokeWidth={2.5} />
+              <span className="relative block overflow-hidden leading-5">
+                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:transition-none">
+                  Download PDF Version Here
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:transition-none"
+                >
+                  Download PDF Version Here
+                </span>
+              </span>
+            </button>
           </div>
 
           <div
@@ -159,6 +178,31 @@ export default function ScheduleDayContent({ day }: { day: ScheduleDay }) {
             <span>Amber · Live performance</span>
             <span>Gray · Festival activity</span>
             <span>Times shown in local time</span>
+          </div>
+          <div className="flex justify-start pt-6">
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group inline-flex items-center gap-3 text-lg font-normal text-black/75 transition-colors duration-300 hover:text-black"
+            >
+              <span className="relative block overflow-hidden leading-7">
+                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:transition-none">
+                  Back to top
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-full whitespace-nowrap transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-full group-focus-visible:-translate-y-full motion-reduce:transition-none"
+                >
+                  Back to top
+                </span>
+              </span>
+              <ArrowUp
+                aria-hidden="true"
+                size={20}
+                strokeWidth={1.8}
+                className="transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-focus-visible:-translate-y-1 motion-reduce:transition-none"
+              />
+            </button>
           </div>
         </div>
       </section>
