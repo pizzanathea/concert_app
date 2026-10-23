@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, ArrowDown, ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion, useMotionValue } from "framer-motion";
 import MagneticIcon from "@/app/components/ui/MagneticIcon";
@@ -225,8 +226,10 @@ export default function Navbar() {
           FULLSCREEN MENU
       ====================================================== */}
 
-      <AnimatePresence>
-        {menuOpen && (
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {menuOpen && (
           <motion.div
             initial={{
               clipPath: "circle(0% at 100% 0%)",
@@ -430,9 +433,9 @@ export default function Navbar() {
                                   </motion.div>
                                 ))}
                               </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                       </div>
                     ) : (
                       /* =================================================
@@ -451,9 +454,11 @@ export default function Navbar() {
                 );
               })}
             </ul>
-          </motion.div>
+            </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </header>
   );
 }
