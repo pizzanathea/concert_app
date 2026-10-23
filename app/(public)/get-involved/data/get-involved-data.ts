@@ -7,65 +7,155 @@ import {
   Utensils,
 } from "lucide-react";
 
+export const sponsorNames = [
+  { name: "TUKU", logo: "/images/sponsors/Tuku.png" },
+  { name: "Coca-Cola", logo: "/images/sponsors/Coca-Cola_logo.svg.webp" },
+  { name: "Sprite", logo: "/images/sponsors/Sprite_2022.svg.webp" },
+  { name: "AQUA", logo: "/images/sponsors/Logo_Air_Mineral_Aqua.png" },
+  { name: "Indomie", logo: "/images/sponsors/Indomie.png" },
+  {
+    name: "Telkomsel",
+    logo: "/images/sponsors/Telkomsel-baru.DYhv_uL8_1mDBsA.webp",
+  },
+  {
+    name: "BCA",
+    logo: "/images/sponsors/Bank_Central_Asia.svg.webp",
+  },
+  {
+    name: "GoPay",
+    logo: "/images/sponsors/Gopay_logo_(2019).svg.webp",
+  },
+  { name: "Kopi Kenangan", logo: "/images/sponsors/Kopi_Kenangan.svg.webp" },
+  {
+    name: "Traveloka",
+    logo: "/images/sponsors/Traveloka_Primary_Logo.webp",
+  },
+] as const;
+
 export const opportunities = [
   {
     id: "sponsors",
     number: "01",
     label: "SPONSORSHIP",
+    menuLabel: "Sponsors",
     title: "Put your name in the mix.",
     description:
       "Bring your brand into a live music experience built around culture, community, and the next generation of festival-goers.",
     detail: "Brand visibility · On-ground activations · Custom collaborations",
     icon: Handshake,
+    pageTitle: "Sponsors",
+    pageIntro:
+      "A concept lineup featuring brands familiar to Indonesian festival-goers. These names are visual references only—not confirmed Z Fest sponsors.",
+    pageSectionTitle: "A shared stage",
+    pageDetails: [
+      "Presenting partners",
+      "Official festival partners",
+      "Experience and community partners",
+    ],
   },
   {
     id: "partners",
     number: "02",
     label: "FESTIVAL PARTNERS",
+    menuLabel: "Partners",
     title: "Make something happen together.",
     description:
       "For organizations and creative communities ready to add a new idea, useful resource, or unexpected point of view to Z Fest.",
     detail: "Creative projects · Community programs · Experience partners",
     icon: HeartHandshake,
+    pageTitle: "Festival Partners",
+    pageIntro:
+      "Good collaborations make the festival reach beyond the stage. We welcome ideas that add value for artists, audiences, and local communities.",
+    pageSectionTitle: "Ways to collaborate",
+    pageDetails: [
+      "Build a cultural or community program",
+      "Create an interactive festival experience",
+      "Support access, sustainability, or artist development",
+      "Bring a useful service to the festival grounds",
+    ],
   },
   {
     id: "food-tenant",
     number: "03",
     label: "FOOD & BEVERAGE",
+    menuLabel: "Food Tenant",
     title: "Feed the in-between moments.",
     description:
       "Bring your signature menu to the festival grounds and become part of what people discover between sets.",
     detail: "Food stalls · Drinks · Independent culinary concepts",
     icon: Utensils,
+    pageTitle: "Food Tenants",
+    pageIntro:
+      "A great festival has its own flavor. We are making room for food and drink concepts that keep the crowd fueled between sets.",
+    pageSectionTitle: "What makes a good fit",
+    pageDetails: [
+      "A focused menu that can be served efficiently",
+      "Clear ingredient and allergen information",
+      "Thoughtful packaging and waste reduction",
+      "A team ready for a high-energy festival environment",
+    ],
   },
   {
     id: "media-partners",
     number: "04",
     label: "MEDIA PARTNERS",
+    menuLabel: "Media Partners",
     title: "Tell the story with us.",
     description:
       "Pair your platform and audience with the sounds, people, and scenes shaping this year’s festival.",
     detail: "Editorial features · Broadcast · Content collaborations",
     icon: Radio,
+    pageTitle: "Media Partners",
+    pageIntro:
+      "Work with Z Fest to bring the music, artists, and community to audiences before, during, and after festival weekend.",
+    pageSectionTitle: "Story formats",
+    pageDetails: [
+      "Artist and behind-the-scenes features",
+      "Live coverage and broadcast collaborations",
+      "Festival guides and audience stories",
+      "Original short-form and social content",
+    ],
   },
   {
     id: "media-registration",
     number: "05",
     label: "MEDIA REGISTRATION",
+    menuLabel: "Media Registration",
     title: "Get closer to the story.",
     description:
       "Journalists, photographers, and creators can register their interest in covering Z Fest and its surrounding program.",
     detail: "Press · Photo · Video · Digital creators",
     icon: Newspaper,
+    pageTitle: "Media Registration",
+    pageIntro:
+      "Press, photo, video, and digital media professionals can prepare to request access to cover Z Fest.",
+    pageSectionTitle: "Have this ready",
+    pageDetails: [
+      "Your name, role, and media organization",
+      "A short description of your coverage plan",
+      "Examples or links to recent published work",
+      "The channels and audience your coverage serves",
+    ],
   },
   {
     id: "volunteer",
     number: "06",
     label: "VOLUNTEERS",
+    menuLabel: "Volunteer",
     title: "Be part of the crew.",
     description:
       "Help make the details feel effortless. Join the people welcoming the crowd, supporting the artists, and bringing the grounds to life.",
     detail: "Guest experience · Festival operations · Community",
     icon: Mic2,
+    pageTitle: "Volunteer Crew",
+    pageIntro:
+      "Be one of the people who make the whole experience feel effortless. Bring your curiosity, care, and team spirit.",
+    pageSectionTitle: "Find your crew",
+    pageDetails: [
+      "Guest welcome and information",
+      "Stage and artist support",
+      "Wayfinding and festival operations",
+      "Community and sustainability crew",
+    ],
   },
 ] as const;
