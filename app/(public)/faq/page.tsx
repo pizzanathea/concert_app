@@ -1,15 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import {
-  ArrowDown,
-  ArrowUp,
-  ArrowUpRight,
-  Plus,
-  Search,
-  X,
-} from "lucide-react";
+import { useState } from "react";
+import { ArrowDown, Search, X } from "lucide-react";
 import {
   AnimatePresence,
   motion,
@@ -131,23 +123,11 @@ export default function FAQPage() {
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [activeQuestion, setActiveQuestion] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showTop, setShowTop] = useState(false);
 
   const { scrollY, scrollYProgress } = useScroll();
 
   const heroY = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
   const indicatorOpacity = useTransform(scrollY, [0, 260], [1, 0]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowTop(window.scrollY > 500);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const filteredFAQs = faqData.filter((faq) => {
     const matchesCategory =
@@ -159,13 +139,6 @@ export default function FAQPage() {
 
     return matchesCategory && matchesSearch;
   });
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-black">
@@ -428,15 +401,23 @@ export default function FAQPage() {
                           </div>
                         </div>
 
-                        <span
-                          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 md:h-11 md:w-11 ${
-                            isOpen
-                              ? "rotate-45 border-black bg-black text-white"
-                              : "border-black/15 text-black/50 group-hover:border-black"
-                          }`}
+                        <motion.span
+                          animate={{
+                            rotate: isOpen ? 180 : 0,
+                            backgroundColor: isOpen ? "#000000" : "transparent",
+                            borderColor: isOpen
+                              ? "#000000"
+                              : "rgba(0,0,0,0.15)",
+                            color: isOpen ? "#ffffff" : "#737373",
+                          }}
+                          transition={{
+                            duration: 0.35,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
+                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border md:h-11 md:w-11"
                         >
-                          <Plus size={17} strokeWidth={1.3} />
-                        </span>
+                          <ArrowDown size={17} strokeWidth={1.3} />
+                        </motion.span>
                       </button>
 
                       <AnimatePresence initial={false}>
@@ -472,7 +453,7 @@ export default function FAQPage() {
                 </p>
 
                 <p className="mt-5 text-sm text-black/45">
-                  We couldn't find any questions matching your search.
+                  We couldn&apos;t find any questions matching your search.
                 </p>
 
                 <button
@@ -489,86 +470,7 @@ export default function FAQPage() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-10 flex justify-between text-[9px] uppercase tracking-[0.2em] text-black/35">
-          <span>{filteredFAQs.length} QUESTIONS FOUND</span>
-          <span>Z FEST / FAQ</span>
-        </div>
       </section>
-
-      {/* CONTACT CTA */}
-      <section className="relative overflow-hidden bg-black px-6 py-32 text-white md:px-10 md:py-48 lg:px-16">
-        <div className="relative z-10">
-          <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-amber-300">
-            STILL NEED HELP?
-          </p>
-
-          <h2 className="mt-8 max-w-6xl text-[17vw] font-semibold leading-[0.78] tracking-[-0.08em] md:text-[11vw]">
-            LET&apos;S
-            <br />
-            TALK<span className="text-amber-300">.</span>
-          </h2>
-
-          <div className="mt-16 flex flex-col justify-between gap-10 border-t border-white/15 pt-8 md:flex-row md:items-end">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-white/40">
-                WE&apos;RE HERE TO HELP
-              </p>
-
-              <p className="mt-3 max-w-md text-sm leading-6 text-white/55">
-                Still have questions? Reach out to the Z Fest team for further
-                assistance.
-              </p>
-            </div>
-
-            <a
-              href="mailto:support@zfest.com"
-              className="group flex items-center gap-5 text-xs font-medium uppercase tracking-[0.2em]"
-            >
-              CONTACT SUPPORT
-              <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 transition-all duration-500 group-hover:border-amber-300 group-hover:bg-amber-300 group-hover:text-black">
-                <ArrowUpRight size={18} strokeWidth={1.3} />
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* BACK TO TOP */}
-      <AnimatePresence>
-        {showTop && (
-          <motion.button
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{ duration: 0.4 }}
-            onClick={scrollToTop}
-            whileHover="hover"
-            initial="initial"
-            className="group fixed bottom-10 right-6 z-40 flex flex-col items-center gap-5 md:bottom-14 md:right-8 lg:right-10"
-          >
-            <motion.span
-              variants={{
-                initial: { y: 0 },
-                hover: { y: -6 },
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              <ArrowUp
-                size={25}
-                strokeWidth={1.2}
-                className="text-black transition-colors duration-300 group-hover:text-amber-600"
-              />
-            </motion.span>
-
-            <span
-              className="text-[9px] font-medium tracking-[0.3em] text-black transition-colors duration-300 group-hover:text-amber-600"
-              style={{ writingMode: "vertical-rl" }}
-            >
-              BACK TO TOP
-            </span>
-          </motion.button>
-        )}
-      </AnimatePresence>
     </main>
   );
 }
